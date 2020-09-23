@@ -1,0 +1,10 @@
+{
+    "welcome":
+    {
+      "mp3": "sdincbud/in"
+    },
+    "goodbye":
+    {
+      "mp3": "sdincbud/out"
+    }
+  }

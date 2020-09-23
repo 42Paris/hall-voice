@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"pfrey/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"pfrey/out/"
+	}
+}

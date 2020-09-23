@@ -1,0 +1,11 @@
+
+{
+	"welcome":
+	{
+		"mp3":"jeguglie/entree"
+	},
+	"goodbye":
+	{
+		"mp3":"jeguglie/sortie"
+	}
+}

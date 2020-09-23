@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "stsavida/in"
+  },
+  "goodbye":
+  {
+    "mp3": "stsavida/out"
+  }
+}

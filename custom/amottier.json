@@ -1,0 +1,12 @@
+{
+  "welcome":
+  {
+    "txt":"YO MEC",
+    "lang":"fr"
+  },
+  "goodbye":
+  {
+    "txt":"TCHAO MEC",
+    "lang":"fr"
+  }
+}

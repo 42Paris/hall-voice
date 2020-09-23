@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "adhanot/in"
+	},
+	"goodbye":
+	{
+		"mp3": "adhanot/out"
+	}
+}

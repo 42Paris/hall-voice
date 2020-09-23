@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"jobailla/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"jobailla/out/"
+	}
+}

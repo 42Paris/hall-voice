@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"kaboujna/kaboujna_in"
+	},
+	"goodbye":
+	{
+		"mp3":"kaboujna/kaboujna_out"
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"phollaen/in.mp3"
+  },
+  "goodbye":
+  {
+    "mp3":"phollaen/out.mp3"
+  }
+}

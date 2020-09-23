@@ -1,0 +1,4 @@
+Flask
+Flask-Hookserver
+GitPython
+urllib3

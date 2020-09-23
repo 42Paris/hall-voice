@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "mprevot/in"
+  },
+  "goodbye":
+  {
+    "mp3": "mprevot/out"
+  }
+}

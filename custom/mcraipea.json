@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "mcraipea/in"
+	},
+	"goodbye":
+	{
+		"mp3":"mcraipea/out"
+	}
+}

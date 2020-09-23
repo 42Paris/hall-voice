@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"mparigi/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"mparigi/out/"
+	}
+}

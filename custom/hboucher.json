@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"hboucher/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"hboucher/sortie/"
+	}
+}

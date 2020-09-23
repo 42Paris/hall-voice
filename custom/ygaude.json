@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"youva/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"youva/out/"
+	}
+}

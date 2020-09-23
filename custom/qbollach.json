@@ -1,0 +1,10 @@
+{
+		"welcome":
+		{
+				"mp3":"qbollach/qbollach_entree.mp3"
+		},
+		"goodbye":
+		{
+				"mp3":"qbollach/qbollach.mp3"
+		}
+}

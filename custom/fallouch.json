@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"fallouch/in"
+	},
+	"goodbye":
+	{
+		"mp3":"fallouch/out"
+	}
+}

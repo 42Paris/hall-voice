@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"gdruel/welcome/"
+	},
+	"goodbye":
+	{
+		"mp3":"gdruel/goodbye/"
+	}
+}

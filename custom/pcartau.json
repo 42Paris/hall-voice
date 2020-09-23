@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"pcartau/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"pcartau/out/"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"adaviere/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"adaviere/sortie/"
+	}
+}

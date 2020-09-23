@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"golliet/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"golliet/out/"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"gufortel/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"gufortel/sortie/"
+	}
+}

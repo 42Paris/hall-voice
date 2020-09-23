@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"lpoinsot/encore.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"lpoinsot/termine.mp3"
+	}
+} 

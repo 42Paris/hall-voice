@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"bspindle/in/"
+  },
+  "goodbye":
+  {
+    "mp3":"bspindle/out/"
+  }
+}

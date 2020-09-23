@@ -1,0 +1,12 @@
+{
+	"welcome":
+	{
+	  "txt":"szia Beata",
+	  "lang":"hu"
+	},
+	"goodbye":
+	{
+	  "txt":"viszlát Beata",
+	  "lang":"hu"
+	}
+}

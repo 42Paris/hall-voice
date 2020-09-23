@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "avallete/in"
+  },
+  "goodbye":
+  {
+    "mp3": "avallete/out"
+  }
+}

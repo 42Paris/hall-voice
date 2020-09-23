@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"tvermeil/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"tvermeil/out/"
+	}
+}

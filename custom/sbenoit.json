@@ -1,0 +1,12 @@
+{
+  "welcome":
+  {
+    "txt":"привет себастиен",
+    "lang":"ru"
+  },
+  "goodbye":
+  {
+    "mp3":"soviet.mp3",
+    "test":"test"
+  }
+}

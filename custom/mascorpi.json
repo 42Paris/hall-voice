@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "mascorpi/in"
+	},
+	"goodbye":
+	{
+		"mp3": "mascorpi/out"
+	}
+}

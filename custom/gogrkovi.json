@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"gogrkovi/entree"
+	},
+	"goodbye":
+	{
+		"mp3":"gogrkovi/sortie"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"jlobjois/in.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"jlobjois/out.mp3"
+	}
+}

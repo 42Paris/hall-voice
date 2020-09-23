@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"alplumet/OPM.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"alplumet/pokemon.mp3"
+	}
+}

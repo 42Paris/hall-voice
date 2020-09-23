@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3" : "ctrouill/input/"
+	},
+	"goodbye":
+	{
+		"mp3" : "ctrouill/output/"
+	}
+}

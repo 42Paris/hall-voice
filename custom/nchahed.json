@@ -1,0 +1,11 @@
+{
+	"welcome":
+	{
+		"text":"Bonjour Nesrine.",
+		"lang":"fr"
+	},
+	"goodbye":
+	{
+		"mp3":"nchahed/out/"
+	}
+}

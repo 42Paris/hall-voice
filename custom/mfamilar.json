@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"mfamilar/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"mfamilar/out/"
+	}
+}

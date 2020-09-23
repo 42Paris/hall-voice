@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"kineflas/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"kineflas/sortie/"
+	}
+}

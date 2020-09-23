@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"angavrel/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"angavrel/out/"
+	}
+}

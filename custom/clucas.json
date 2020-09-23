@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"clucas/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"clucas/sortie/"
+	}
+}

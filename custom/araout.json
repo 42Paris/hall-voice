@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"araout/in"
+	},
+	"goodbye":
+	{
+		"mp3":"araout/out"
+	}
+}

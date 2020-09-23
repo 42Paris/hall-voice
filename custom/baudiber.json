@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"baudiber/hello_there.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"baudiber/to_be_continued.mp3"
+	}
+}

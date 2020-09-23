@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"qduperon/Entree.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"qduperon/Sortie.mp3"
+	}
+}

@@ -1,0 +1,12 @@
+{
+    "welcome":
+    {
+      "txt":"goodbye frank",
+      "lang":"en"
+    },
+    "goodbye":
+    {
+      "txt":"welcome back",
+      "lang":"en"
+    }
+  }

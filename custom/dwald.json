@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"dwald/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"dwald/sortie/"
+	}
+}

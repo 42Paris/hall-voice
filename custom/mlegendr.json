@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"mlegendr/welcome.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"mlegendr/goodbye.mp3"
+	}
+}

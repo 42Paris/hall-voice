@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"fbouquet/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"fbouquet/out/"
+	}
+}

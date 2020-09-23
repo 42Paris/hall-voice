@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"agrumbac/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"agrumbac/out/"
+	}
+}

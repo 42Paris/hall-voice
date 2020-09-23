@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"atom/input/"
+  },
+  "goodbye":
+  {
+    "mp3":"atom/output/"
+  }
+}

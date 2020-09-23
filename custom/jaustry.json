@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"jaustry/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"jaustry/sortie/"
+	}
+}

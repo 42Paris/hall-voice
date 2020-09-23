@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"vparis/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"vparis/out/"
+	}
+}

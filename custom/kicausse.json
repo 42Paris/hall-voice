@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"kicausse/in"
+	},
+	"goodbye":
+	{
+		"mp3":"kicausse/out"
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"ccastin/hello/"
+  },
+  "goodbye":
+  {
+    "mp3":"ccastin/bye/"
+  }
+}

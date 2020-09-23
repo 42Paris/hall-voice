@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "jrouzier_le_bg/in"
+  },
+  "goodbye":
+  {
+    "mp3": "jrouzier_le_bg/out"
+  }
+}

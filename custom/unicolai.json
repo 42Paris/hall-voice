@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"unicolai/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"unicolai/sortie/"
+	}
+}

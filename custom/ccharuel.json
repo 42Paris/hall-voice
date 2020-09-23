@@ -1,0 +1,11 @@
+{
+  "welcome":
+  {
+    "txt":"Clarisse tu es magnifique",
+    "lang":"fr"
+  },
+  "goodbye":
+  {
+    "mp3":"ccharuel/out/"
+  }
+}

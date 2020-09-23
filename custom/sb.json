@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"priviet-sb.mp3"
+  },
+  "goodbye":
+  {
+    "mp3":"soviet.mp3"
+  }
+}

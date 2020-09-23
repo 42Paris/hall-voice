@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"sly/entree/"
+  },
+  "goodbye":
+  {
+    "mp3":"sly/02.mp3"
+  }
+}

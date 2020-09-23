@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3”:”selias/in"
+	},
+	"goodbye":
+	{
+		"mp3":"selias/out"
+	}
+}

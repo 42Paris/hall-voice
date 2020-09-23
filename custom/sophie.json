@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"zelda.mp3"
+  },
+  "goodbye":
+  {
+    "mp3":"bye-bye-termine.mp3"
+  }
+}

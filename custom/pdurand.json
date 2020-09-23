@@ -1,0 +1,10 @@
+{
+        "welcome":
+        {
+                "mp3":"pdurand/in/"
+        },
+        "goodbye":
+        {
+                "mp3":"pdurand/out/"
+        }
+}

@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"bclerc/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"bclerc/sortie/"
+	}
+}

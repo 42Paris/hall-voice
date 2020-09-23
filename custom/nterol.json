@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"nterol/entree/"
+	},
+	"goodbye": 
+	{
+		"mp3":"nterol/sortie/"
+	}
+}

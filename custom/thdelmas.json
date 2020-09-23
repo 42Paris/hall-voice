@@ -1,0 +1,11 @@
+{
+	"welcome":
+	{
+		"mp3":"thdelmas/hello"
+	},
+	"goodbye":
+	{
+		"txt":"Au revoir Jerry",
+		"lang":"fr"
+	}
+}

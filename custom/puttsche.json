@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"puttsche/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"puttsche/out/"
+	}
+}

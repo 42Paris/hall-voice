@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"fbellott/input.mp3"
+	},
+	"goodbye":
+	{
+		"mp3":"fbellott/output.mp3"
+	}
+}

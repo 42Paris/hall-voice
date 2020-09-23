@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"valecart/entree/"
+	},
+	"goodbye":
+	{
+		"mp3":"valecart/sortie/"
+	}
+}

@@ -1,0 +1,10 @@
+{
+    "welcome":
+    {
+        "mp3":"rpatoux/in/"
+    },
+    "goodbye":
+    {
+      "mp3":"rpatoux/out/"
+    }
+}

@@ -1,0 +1,10 @@
+{
+		"welcome":
+		{
+				"mp3":"snicolet/in/"
+		},
+		"goodbye":
+		{
+				"mp3":"snicolet/out/"
+		}
+}

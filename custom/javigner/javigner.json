@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"javigner/in"
+	},
+	"goodbye":
+	{
+		"mp3":"javigner/out"
+	}
+}
