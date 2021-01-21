@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install sox and jq
-        run: sudo apt-get -qq -y install libsox-fmt-mp3 sox jq
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq -y install libsox-fmt-mp3 sox jq
 
       - name: Get changed files
         uses: lots0logs/gh-action-get-changed-files@2.1.4
