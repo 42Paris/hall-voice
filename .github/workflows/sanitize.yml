@@ -13,10 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install sox and jq
+      - name: Install sox, jq and pip packages
         run: |
           sudo apt-get -qq update
           sudo apt-get -qq -y install libsox-fmt-mp3 sox jq
+          python3 -m pip install -r requirements.txt
 
       - name: Get changed files
         uses: lots0logs/gh-action-get-changed-files@2.1.4
@@ -24,9 +25,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
 #     - name: Run sanitize.py
-#       run: |
-#         python3 -m pip install -r requirements.txt
-#         jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
+#       run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
 
 #     - name: Commit changes
 #       uses: stefanzweifel/git-auto-commit-action@v4
