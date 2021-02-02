@@ -1,8 +1,8 @@
 {
 	"welcome": {
-		"mp3": "mlabouri/in"
+		"mp3": "mlabouri/ins"
 	},
 	"goodbye": {
-		"mp3": "mlabouri/out"
+		"mp3": "mlabouri/outs"
 	}
 }
