@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "kguibout/entree"
+	},
+	"goodbye":
+	{
+		"mp3": "kguibout/sortie"
+	}
+}
