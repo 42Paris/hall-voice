@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"tefroiss/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"tefroiss/out/"
+	}
+}
