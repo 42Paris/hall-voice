@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"malallai/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"malallai/out/"
+	}
+}
