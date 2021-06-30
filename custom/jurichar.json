@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"jurichar/in"
+	},
+	"goodbye":
+	{
+		"mp3":"jurichar/out"
+	}
+}
