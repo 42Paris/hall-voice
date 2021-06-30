@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"fmanetti/in"
+	},
+	"goodbye":
+	{
+		"mp3":"fmanetti/out"
+	}
+}
