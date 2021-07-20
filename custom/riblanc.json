@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"riblanc/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"riblanc/out/"
+	}
+}
