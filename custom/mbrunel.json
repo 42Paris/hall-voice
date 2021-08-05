@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "mbrunel/in"
+  },
+  "goodbye":
+  {
+    "mp3": "mbrunel/out"
+  }
+}

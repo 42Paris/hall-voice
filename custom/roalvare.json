@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"roalvare/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"roalvare/out/"
+	}
+}
