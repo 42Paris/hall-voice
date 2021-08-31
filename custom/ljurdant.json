@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "ljurdant/in"
+  },
+  "goodbye":
+  {
+    "mp3": "ljurdant/out"
+  }
+ }
