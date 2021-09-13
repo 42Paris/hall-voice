@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"mhalit/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"mhalit/out/"
+	}
+}
