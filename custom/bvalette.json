@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "bvalette/in"
+  },
+  "goodbye":
+  {
+    "mp3": "bvalette/out"
+  }
+}
