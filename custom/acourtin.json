@@ -1,10 +1,10 @@
 {
 	"welcome":
 	{
-		"mp3": "acourtin"
+		"mp3": "acourtin/in"
 	},
 	"goodbye":
 	{
-		"mp3": "acourtin"
+		"mp3": "acourtin/out"
 	}
 }
