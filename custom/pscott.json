@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "pscott/in"
+  },
+  "goodbye":
+  {
+    "mp3": "pscott/out"
+  }
+}
