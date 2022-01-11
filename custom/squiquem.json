@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "squiquem/in"
+	},
+	"goodbye":
+	{
+		"mp3": "squiquem/out"
+	}
+}
