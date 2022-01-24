@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"tsignore/IN"
+	},
+	"goodbye":
+	{
+		"mp3":"tsignore/OUT"
+	}
+}
