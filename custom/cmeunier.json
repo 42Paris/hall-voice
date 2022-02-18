@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "cmeunier/in"
+  },
+  "goodbye":
+  {
+    "mp3": "cmeunier/out"
+  }
+}

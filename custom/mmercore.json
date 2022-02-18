@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"mmercore/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"mmercore/out/"
+	}
+}
