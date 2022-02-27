@@ -41,6 +41,7 @@ if __name__ == "__main__":
         parser.add_argument('-v', '--verbose', default=False, action='store_true', help='Verbose mode')
         parser.add_argument('logins', nargs='*', default=[], help='Logins to check')
         args = parser.parse_args()
+        print(args)
 
         if not args.logins:
             sys.exit()
