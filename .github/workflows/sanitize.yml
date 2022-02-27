@@ -23,10 +23,6 @@ jobs:
         uses: lots0logs/gh-action-get-changed-files@2.1.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: test
-        id: test
-        run: cat ${HOME}/files.json
 
 #     - name: Run sanitize.py
 #       run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
@@ -89,4 +85,3 @@ jobs:
               body: 'CI: HallVoice check on intra shop: KO ❌'
             })
             core.setFailed('HallVoice check on intra shop KO')
-
