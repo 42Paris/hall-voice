@@ -55,7 +55,7 @@ jobs:
 
       - name: Post comment for check-commands (OK)
         if: steps.check-commands.outcome == 'success'
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -68,7 +68,7 @@ jobs:
 
       - name: Post comment for check-commands (KO)
         if: steps.check-commands.outcome != 'success'
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
