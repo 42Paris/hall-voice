@@ -1,0 +1,10 @@
+{
+    "welcome":
+    {
+      "mp3": "lzaccome/in"
+    },
+    "goodbye":
+    {
+      "mp3": "lzaccome/out"
+    }
+  }
