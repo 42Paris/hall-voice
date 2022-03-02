@@ -20,7 +20,8 @@ jobs:
           python3 -m pip install -r requirements.txt
 
       - name: Get changed files
-        uses: lots0logs/gh-action-get-changed-files@2.1.4
+        #uses: lots0logs/gh-action-get-changed-files@2.1.4
+        uses: Mineflash07/gh-action-get-changed-files@feature/support-pr-target-event # Remove as soon as PR is merged. See https://github.com/lots0logs/gh-action-get-changed-files/pull/22
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
