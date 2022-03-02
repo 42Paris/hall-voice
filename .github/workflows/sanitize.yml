@@ -29,26 +29,26 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run sanitize.py
-        run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
+#     - name: Run sanitize.py
+#       run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'CI: Sanitize mp3'
-          commit_author: 'GitHub Actions <actions@github.com>'
+#     - name: Commit changes
+#       uses: stefanzweifel/git-auto-commit-action@v4
+#       with:
+#         commit_message: 'CI: Sanitize mp3'
+#         commit_author: 'GitHub Actions <actions@github.com>'
 
-      - name: Post comment for sanitize
-        uses: actions/github-script@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'CI: mp3 files have been sanitized 🔉'
-            })
+#     - name: Post comment for sanitize
+#       uses: actions/github-script@v3
+#       with:
+#         github-token: ${{ secrets.GITHUB_TOKEN }}
+#         script: |
+#           github.issues.createComment({
+#             issue_number: context.issue.number,
+#             owner: context.repo.owner,
+#             repo: context.repo.repo,
+#             body: 'CI: mp3 files have been sanitized 🔉'
+#           })
 
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
