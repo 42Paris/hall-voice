@@ -1,10 +1,10 @@
 {
 	"welcome":
 	{
-		"mp3":"vahemere/"
+		"mp3":"vahemere/in/"
 	},
 	"goodbye":
 	{
-		"mp3":"vahemere/"
+		"mp3":"vahemere/out/"
 	}
 }
