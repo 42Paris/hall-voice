@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "tpons/in"
+  },
+  "goodbye":
+  {
+    "mp3": "tpons/out"
+  }
+}
