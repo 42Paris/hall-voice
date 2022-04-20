@@ -1,3 +1,4 @@
 cache/
 config.json
 .envrc
+.DS_Store
