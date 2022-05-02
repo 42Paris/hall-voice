@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "barodrig/in"
+  },
+  "goodbye":
+  {
+    "mp3": "barodrig/out"
+  }
+}
