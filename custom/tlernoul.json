@@ -1,10 +1,10 @@
 {
 	"welcome":
 	{
-		"mp3":"tlernoul/in/"
+		"mp3":"sonic/"
 	},
 	"goodbye":
 	{
-		"mp3":"tlernoul/out/"
+		"mp3":"sonic/"
 	}
 }
