@@ -1,0 +1,10 @@
+{
+ "welcome":
+  {
+   "mp3": "eedy/in"
+  },
+ "goodbye":
+  {
+   "mp3": "eedy/out"
+  }
+}
