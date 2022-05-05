@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "alemarch/in"
+  },
+  "goodbye":
+  {
+    "mp3": "alemarch/out"
+  }
+}
