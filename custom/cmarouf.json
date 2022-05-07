@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"cmarouf/in"
+	},
+	"goodbye":
+	{
+		"mp3":"cmarouf/out"
+	}
+}
