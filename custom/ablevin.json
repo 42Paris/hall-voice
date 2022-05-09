@@ -1,0 +1,11 @@
+
+{
+  "welcome":
+  {
+    "mp3": "ablevin/in"
+  },
+  "goodbye":
+  {
+    "mp3": "ablevin/out"
+  }
+}
