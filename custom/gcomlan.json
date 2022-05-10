@@ -1,0 +1,10 @@
+{
+    "welcome":
+    {
+      "mp3": "gcomlan/in"
+    },
+    "goodbye":
+    {
+      "mp3": "gcomlan/out"
+    }
+  }
