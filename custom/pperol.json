@@ -1,11 +1,11 @@
 {
   "welcome":
   {
-    "mp3":"pperol/entry/"
+    "mp3":"pperol/in/"
   },
   "goodbye":
   {
-    "mp3":"pperol/exit/"
+    "mp3":"pperol/out/"
   }
 }
 
