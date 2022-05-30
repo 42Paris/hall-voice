@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3":"viporten/in"
+  },
+  "goodbye":
+  {
+    "mp3":"viporten/out"
+  }
+}
