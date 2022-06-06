@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "mcauchy/in"
+	},
+	"goodbye":
+	{
+		"mp3": "mcauchy/out"
+	}
+}
