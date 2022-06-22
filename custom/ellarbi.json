@@ -1,0 +1,10 @@
+{
+    "welcome":
+    {
+        "mp3":"ellarbi/in"
+    },
+    "goodbye":
+    {
+        "mp3":"ellarbi/out"
+    }
+}

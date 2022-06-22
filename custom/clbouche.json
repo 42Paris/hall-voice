@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "clbouche/in"
+  },
+  "goodbye":
+  {
+    "mp3": "clbouche/out"
+  }
+}
