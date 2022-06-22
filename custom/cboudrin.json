@@ -1,10 +1,10 @@
 {
 	"welcome":
 	{
-		"mp3": "abemorea/entree"
+		"mp3": "cboudrin/in"
 	},
 	"goodbye":
 	{
-		"mp3": "abemorea/sortie"
+		"mp3": "cboudrin/out"
 	}
 }
