@@ -1,9 +1,9 @@
 {
-  welcome:
+  "welcome":
   {
     "mp3": "chduong/in"
   },
-  goodbye:
+  "goodbye":
   {
     "mp3": "chduong/out"
   }
