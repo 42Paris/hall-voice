@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"kychoi/in"
+	},
+	"goodbye":
+	{
+		"mp3":"kychoi/out"
+	}
+}
