@@ -53,7 +53,7 @@ jobs:
       - name: Check if .json file is present
         id: check-json
         run: |
-          echo ${HOME}/files.json
+          cat ${HOME}/files.json
 
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
