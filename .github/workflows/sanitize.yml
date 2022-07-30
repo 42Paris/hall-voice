@@ -15,7 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }} # Force get PR's files
 
       - name: Install sox, jq and pip packages
         run: |
@@ -53,7 +55,7 @@ jobs:
       - name: Check if .json file is present
         id: check-json
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % sh -c 'test ! -f "custom/%.json" && echo "::error::Filename custom/%.json not found"'
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % test -f "custom/%.json"
         
       - name: Post comment for .json missing
         if: steps.check-json.outcome != 'success'
