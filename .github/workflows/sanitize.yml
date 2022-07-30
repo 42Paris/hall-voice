@@ -50,6 +50,11 @@ jobs:
 #             body: 'CI: mp3 files have been sanitized 🔉'
 #           })
 
+      - name: Check if .json file is present
+        id: check-json
+        run: |
+          cat ${HOME}/files.json
+
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
         env:
