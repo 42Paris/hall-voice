@@ -50,19 +50,33 @@ jobs:
 #             body: 'CI: mp3 files have been sanitized 🔉'
 #           })
 
+      - name: Check if .json file is present
+        id: check-json
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % sh -c 'test ! -f "custom/%.json" && echo "::error::Filename custom/%.json not found"'
+        
+      - name: Post comment for .json missing
+        if: steps.check-json.outcome != 'success'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'CI: .json file is missing ❌'
+            })
+            core.setFailed('.json file is missing')
+          
+
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
         env:
           API42_ID: ${{ secrets.API42_ID }}
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
-        run: |
-          if [[ -n $(jq -r '.[] | select(startswith("custom"))' ${HOME}/files.json) ]];
-          then
-            jq -r '.[] | select(startswith("custom")) | split("/")[] | select(endswith(".json")) | split(".json")[0]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-          else
-            jq -r '.[] | select(startswith("mp3")) | split("/")[1]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-          fi
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-commands.py -v --
 
       - name: Post comment for check-commands (OK)
         if: steps.check-commands.outcome == 'success'
