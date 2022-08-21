@@ -70,14 +70,14 @@ jobs:
         continue-on-error: true
         run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-commands.py -v --
             
-      - name: Post comment .json missing
+      - name: Post comment
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const checkJson = ${{ steps.check-json.outcome }} == 'success'
-            const checkCommands = ${{ steps.check-commands.outcome }} == 'success'
-            const checkFiles = ${{ steps.check-files.outcome }} == 'success'
+            const checkJson = '${{ steps.check-json.outcome }}' == 'success'
+            const checkCommands = '${{ steps.check-commands.outcome }}' == 'success'
+            const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
             const message = `CI:
               - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
               - ${checkJson ? '✅' : '❌'} .json file
