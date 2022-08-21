@@ -76,21 +76,27 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             check-json = ${{ steps.check-json.outcome }} == 'success'
+            console.log(check-json)
             check-commands = ${{ steps.check-commands.outcome }} == 'success'
+            console.log(check-commands)
             check-files = ${{ steps.check-files.outcome }} == 'success'
+            console.log(check-files)
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'CI:
-              - ' + check-json ? '✅' : '❌' + ' .json file
-              - ' + check-commands ? '✅' : '❌' + ' HallVoice check on intra shop
-              - ' + check-files ? '✅' : '❌' + ' 20 song max'
+              body: `CI:
+              - ${check-json ? '✅' : '❌'} .json file
+              - ${check-commands ? '✅' : '❌'} HallVoice check on intra shop
+              - ${check-files ? '✅' : '❌'} 20 song max`
             })
-            if !check-json
+            if (!check-json) {
               core.setFailed('.json file is missing')
-            if !check-commands
+            }
+            if (!check-commands) {
               core.setFailed('.json file is missing')
-            if !check-files
+            }
+            if (!check-files) {
               core.setFailed('.json file is missing')
+            }
 
