@@ -75,28 +75,27 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            check-json = ${{ steps.check-json.outcome }} == 'success'
-            console.log(check-json)
-            check-commands = ${{ steps.check-commands.outcome }} == 'success'
-            console.log(check-commands)
-            check-files = ${{ steps.check-files.outcome }} == 'success'
-            console.log(check-files)
+            const checkJson = true
+            const checkCommands = false
+            const checkFiles = true
+            const message = `CI:
+            message = `CI:
+              - ${checkJson ? '✅' : '❌'} .json file
+              - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
+              - ${checkFiles ? '✅' : '❌'} 20 song max`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `CI:
-              - ${check-json ? '✅' : '❌'} .json file
-              - ${check-commands ? '✅' : '❌'} HallVoice check on intra shop
-              - ${check-files ? '✅' : '❌'} 20 song max`
+              body: message
             })
-            if (!check-json) {
+            if (!checkJson) {
               core.setFailed('.json file is missing')
             }
-            if (!check-commands) {
-              core.setFailed('.json file is missing')
+            if (!checkCommands) {
+              core.setFailed('HallVoice check on intra shop KO')
             }
-            if (!check-files) {
-              core.setFailed('.json file is missing')
+            if (!checkFiles) {
+              core.setFailed('No more than 20 songs')
             }
 
