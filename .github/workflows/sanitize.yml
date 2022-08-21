@@ -55,12 +55,12 @@ jobs:
       - name: Check if .json file is present
         id: check-json
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % test -f "custom/%.json"
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} test -f "custom/{}.json"
 
-      - name: Check if 
+      - name: Check if there are less than 20 sounds
         id: check-files
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % sh -c "test $(find mp3/$1 -type f | wc -l | tr -d " ") \< '21'" -- %
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} sh -c 'test $(find mp3/{} -type f | wc -l) \< 21' -- {}
 
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
@@ -75,12 +75,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const checkJson = true
-            const checkCommands = false
-            const checkFiles = true
+            const checkJson = ${{ steps.check-json.outcome }} == 'success'
+            const checkCommands = ${{ steps.check-commands.outcome }} == 'success'
+            const checkFiles = ${{ steps.check-files.outcome }} == 'success'
             const message = `CI:
-              - ${checkJson ? '✅' : '❌'} .json file
               - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
+              - ${checkJson ? '✅' : '❌'} .json file
               - ${checkFiles ? '✅' : '❌'} 20 song max`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -95,6 +95,6 @@ jobs:
               core.setFailed('HallVoice check on intra shop KO')
             }
             if (!checkFiles) {
-              core.setFailed('No more than 20 songs')
+              core.setFailed('More than 20 songs')
             }
 
