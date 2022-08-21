@@ -2,7 +2,7 @@ name: Sanitize
 
 on:
   pull_request_target:
-    branches: [ master ]
+    branches: [ master, update-workflow ]
     paths:
       - 'custom/*.json'
       - 'mp3/**'
