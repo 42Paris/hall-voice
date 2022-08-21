@@ -56,21 +56,11 @@ jobs:
         id: check-json
         continue-on-error: true
         run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % test -f "custom/%.json"
-        
-      - name: Post comment for .json missing
-        if: steps.check-json.outcome != 'success'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'CI: .json file is missing ❌'
-            })
-            core.setFailed('.json file is missing')
-          
+
+      - name: Check if 
+        id: check-files
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I % sh -c "test $(find mp3/% -type f | wc -l | tr -d " ") \< '21'"
 
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
@@ -79,30 +69,28 @@ jobs:
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
         run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-
-      - name: Post comment for check-commands (OK)
-        if: steps.check-commands.outcome == 'success'
+            
+      - name: Post comment .json missing
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            check-json = ${{ steps.check-json.outcome }} == 'success'
+            check-commands = ${{ steps.check-commands.outcome }} == 'success'
+            check-files = ${{ steps.check-files.outcome }} == 'success'
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'CI: HallVoice check on intra shop: OK ✅'
+              body: 'CI:
+              - ' + check-json ? '✅' : '❌' + ' .json file
+              - ' + check-commands ? '✅' : '❌' + ' HallVoice check on intra shop
+              - ' + check-files ? '✅' : '❌' + ' 20 song max'
             })
+            if !check-json
+              core.setFailed('.json file is missing')
+            if !check-commands
+              core.setFailed('.json file is missing')
+            if !check-files
+              core.setFailed('.json file is missing')
 
-      - name: Post comment for check-commands (KO)
-        if: steps.check-commands.outcome != 'success'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'CI: HallVoice check on intra shop: KO ❌'
-            })
-            core.setFailed('HallVoice check on intra shop KO')
