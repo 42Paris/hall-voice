@@ -79,7 +79,6 @@ jobs:
             const checkCommands = false
             const checkFiles = true
             const message = `CI:
-            message = `CI:
               - ${checkJson ? '✅' : '❌'} .json file
               - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
               - ${checkFiles ? '✅' : '❌'} 20 song max`
