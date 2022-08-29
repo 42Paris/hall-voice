@@ -60,7 +60,7 @@ jobs:
       - name: Check if there are less than 20 sounds
         id: check-files
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} sh -c 'test $(find mp3/{} -type f | wc -l) \< 21' -- {}
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} sh -c 'test $(find mp3/{} -type f | wc -l) -le 20' -- {}
 
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
