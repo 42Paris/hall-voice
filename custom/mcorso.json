@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "mcorso/in"
+	},
+	"goodbye":
+	{
+		"mp3": "mcorso/out"
+	}
+}

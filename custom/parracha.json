@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "parracha/in"
+	},
+	"goodbye":
+	{
+		"mp3": "parracha/out"
+	}
+}

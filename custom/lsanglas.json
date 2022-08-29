@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"lsanglas/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"lsanglas/out/"
+	}
+}
