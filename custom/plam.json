@@ -1,10 +1,10 @@
 {
 	"welcome":
 	{
-		"mp3":"plam/in"
+		"mp3":"plam/in/"
 	},
 	"goodbye":
 	{
-		"mp3":"plam/out"
+		"mp3":"plam/out/"
 	}
 }
