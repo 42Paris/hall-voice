@@ -1,23 +1,20 @@
 #!/usr/bin/env python3
 
-import os, sys, argparse
+import os, sys, argparse, json
 
 
-def check_files(login):
-    sounds_path = os.environ['PWD'] + '/mp3/' + login
-    for currentpath, folders, files in os.walk(sounds_path):
-        ok = True
-        for file in files:
-            file_path = os.path.join(currentpath, file)
-            fsize = os.path.getsize(file_path)
+def check_files(filepath):
 
-            if fsize > 1000000:
-                if args.verbose:
-                    print(f"{file}: is {fsize}: NOT OK")
-                ok = False
-            else:
-                if args.verbose:
-                    print(f"{file}: is {fsize}: OK")
+    fsize = os.path.getsize(filepath)
+    ok = True
+
+    if fsize > 1000000:
+        if args.verbose:
+            print(f"{filepath}: is {fsize}: NOT OK")
+        ok = False
+    else:
+        if args.verbose:
+            print(f"{filepath}: is {fsize}: OK")
 
     return ok
 
@@ -26,17 +23,23 @@ if __name__ == "__main__":
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument('-v', '--verbose', default=False, action='store_true', help='Verbose mode')
-        parser.add_argument('logins', nargs='*', default=[], help='Logins to check')
+        parser.add_argument('files', nargs='*', default=[], help='Files to check')
         args = parser.parse_args()
 
-        if not args.logins:
+        if not args.files:
             sys.exit()
 
         if args.verbose:
-            print('Logins:', args.logins, '\n')
+            print('files:', args.files, '\n')
 
-        checks = [check_files(login) for login in args.logins]
+        checks = [check_files(file) for file in args.files]
         if False in checks:
+            if args.verbose:
+                print('FAILURE')
             sys.exit(1)
+
+        elif args.verbose:
+            print('SUCCESS')
+
     except KeyboardInterrupt:
         sys.exit()
