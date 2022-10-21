@@ -69,7 +69,12 @@ jobs:
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
         run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-            
+
+      - name: Check if files are under 1 Mo
+        id: check-files-size
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("mp3"))] | unique[]' ${HOME}/files.json | xargs python3 check-files-size.py -v --
+
       - name: Post comment
         uses: actions/github-script@v6
         with:
@@ -78,9 +83,11 @@ jobs:
             const checkJson = '${{ steps.check-json.outcome }}' == 'success'
             const checkCommands = '${{ steps.check-commands.outcome }}' == 'success'
             const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
+            const checkFilesSize = '${{ steps.check-files-size.outcome }}' == 'success'
             const message = `CI:
               - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
               - ${checkJson ? '✅' : '❌'} .json file
+              - ${checkFilesSize ? '✅' : '❌'} files are under 1 Mo
               - ${checkFiles ? '✅' : '❌'} 20 song max`
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -96,5 +103,8 @@ jobs:
             }
             if (!checkFiles) {
               core.setFailed('More than 20 songs')
+            }
+            if (!checkFilesSize) {
+              core.setFailed('Mp3 file is over 1 Mo')
             }
 
