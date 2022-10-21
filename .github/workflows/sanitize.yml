@@ -73,7 +73,7 @@ jobs:
       - name: Check if files are under 1 Mo
         id: check-files-size
         continue-on-error: true
-        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-files-size.py -v --
+        run: jq -r '[.[] | select(startswith("mp3"))] | unique[]' ${HOME}/files.json | xargs python3 check-files-size.py -v --
 
       - name: Post comment
         uses: actions/github-script@v6
