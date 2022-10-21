@@ -1,10 +1,10 @@
 {
   "welcome":
   {
-    "mp3": "nsimon/in"
+    "mp3": "nsimon/in/"
   },
   "goodbye":
   {
-    "mp3": "nsimon/out"
+    "mp3": "nsimon/out/"
   }
 }
