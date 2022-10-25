@@ -73,7 +73,7 @@ jobs:
       - name: Check if files are under 1 Mo
         id: check-files-size
         continue-on-error: true
-        run: python3 check-files-size.py -v -- ${HOME}/files.json
+        run: echo $HOME/files.json | xargs python3 check-files-size.py -v --
 
       - name: Post comment
         uses: actions/github-script@v6
