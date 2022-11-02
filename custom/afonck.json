@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "afonck/in"
+  },
+  "goodbye":
+  {
+    "mp3": "afonck/out"
+  }
+}

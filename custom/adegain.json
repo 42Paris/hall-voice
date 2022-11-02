@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "adegain/in"
+	},
+	"goodbye":
+	{
+		"mp3": "adegain/out"
+	}
+}

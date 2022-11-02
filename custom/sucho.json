@@ -1,0 +1,11 @@
+
+{
+	"welcome":
+	{
+		"mp3":"sucho/in/"
+	},
+	"goodbye":
+	{
+		"mp3":"sucho/out/"
+	}
+}
