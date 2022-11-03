@@ -13,15 +13,19 @@ def check_json(filepath):
         print('json data:', str(jsondata), '\n')
 
     for j in jsondata:
-        fsize = os.path.getsize(j)
-    
-        if fsize > 1000000:
-            if args.verbose:
-                print(f"{j}: is {fsize}: NOT OK")
-            ok = False
+        if os.path.exists(j):
+            fsize = os.path.getsize(j)
+        
+            if fsize > 1000000:
+                if args.verbose:
+                    print(f"{j}: is {fsize}: NOT OK")
+                ok = False
+            else:
+                if args.verbose:
+                    print(f"{j}: is {fsize}: OK")
         else:
             if args.verbose:
-                print(f"{j}: is {fsize}: OK")
+                print(f"{j}: FILE NOT FOUND")
 
     return ok
 
