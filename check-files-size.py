@@ -9,6 +9,9 @@ def check_json(filepath):
 
     jsondata = json.load(f)
 
+    if args.verbose:
+        print('json data:', str(jsondata), '\n')
+
     for j in jsondata:
         fsize = os.path.getsize(j)
     
@@ -34,7 +37,7 @@ if __name__ == "__main__":
             sys.exit()
 
         if args.verbose:
-            print('files:', args.file, '\n')
+            print('json file:', args.file, '\n')
 
         checks = check_json(args.file)
         if not checks:
