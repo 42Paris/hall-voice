@@ -1,3 +1,0 @@
-sox
-requests_oauthlib
-oauthlib
