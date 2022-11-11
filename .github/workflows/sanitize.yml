@@ -15,7 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }} # Force get PR's files
 
       - name: Install sox, jq and pip packages
         run: |
@@ -50,43 +52,67 @@ jobs:
 #             body: 'CI: mp3 files have been sanitized 🔉'
 #           })
 
+      - name: Check if .json file is present
+        id: check-json
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} test -f "custom/{}.json"
+
+      - name: Check if there are less than 20 sounds
+        id: check-files
+        continue-on-error: true
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs -I {} sh -c 'test $(find mp3/{} -type f | wc -l) -le 20' -- {}
+
       - name: Check if student has bought Hall Voice Change on intra
         id: check-commands
         env:
           API42_ID: ${{ secrets.API42_ID }}
           API42_SECRET: ${{ secrets.API42_SECRET }}
         continue-on-error: true
-        run: |
-          if [[ -n $(jq -r '.[] | select(startswith("custom"))' ${HOME}/files.json) ]];
-          then
-            jq -r '.[] | select(startswith("custom")) | split("/")[] | select(endswith(".json")) | split(".json")[0]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-          else
-            jq -r '.[] | select(startswith("mp3")) | split("/")[1]' ${HOME}/files.json | xargs python3 check-commands.py -v --
-          fi
+        run: jq -r '[.[] | select(startswith("custom") or startswith("mp3")) | split("/")[1] | split(".json")[0]] | unique[]' ${HOME}/files.json | xargs python3 check-commands.py -v --
 
-      - name: Post comment for check-commands (OK)
-        if: steps.check-commands.outcome == 'success'
+      - name: Check if files are under 1 Mo
+        id: check-files-size
+        continue-on-error: true
+        run: echo $HOME/files.json | xargs python3 check-files-size.py -v --
+
+      - name: Post comment
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const checkJson = '${{ steps.check-json.outcome }}' == 'success'
+            const checkCommands = '${{ steps.check-commands.outcome }}' == 'success'
+            const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
+            const checkFilesSize = '${{ steps.check-files-size.outcome }}' == 'success'
+            var message = `CI:
+              - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
+              - ${checkJson ? '✅' : '❌'} .json file
+              - ${checkFilesSize ? '✅' : '❌'} Files are under 1 Mo
+              - ${checkFiles ? '✅' : '❌'} 20 song max
+              `
+            if (checkCommands && checkJson && checkFilesSize && checkFiles) {
+              message += `
+              - ⌛ Everything looks good, awaiting staff approval`
+            } else {
+              message += `
+              - ❌ Something went wrong, check your PR`
+            }
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'CI: HallVoice check on intra shop: OK ✅'
+              body: message
             })
+            if (!checkJson) {
+              core.setFailed('.json file is missing')
+            }
+            if (!checkCommands) {
+              core.setFailed('HallVoice check on intra shop KO')
+            }
+            if (!checkFiles) {
+              core.setFailed('More than 20 songs')
+            }
+            if (!checkFilesSize) {
+              core.setFailed('Mp3 file is over 1 Mo')
+            }
 
-      - name: Post comment for check-commands (KO)
-        if: steps.check-commands.outcome != 'success'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'CI: HallVoice check on intra shop: KO ❌'
-            })
-            core.setFailed('HallVoice check on intra shop KO')
