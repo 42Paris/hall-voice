@@ -1,10 +1,10 @@
 {
   "welcome":
   {
-    "mp3": "sshakya/other"
+    "mp3": "sshakya/in"
   },
   "goodbye":
   {
-    "mp3": "sshakya/other"
+    "mp3": "sshakya/out"
   }
 }

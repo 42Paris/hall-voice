@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "vsaltel/in"
+  },
+  "goodbye":
+  {
+    "mp3": "vsaltel/out"
+  }
+}

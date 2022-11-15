@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /root/porte42/
+cd /home/bocal/porte42/
 
 ps aux | grep python | grep ./porte.py | awk '{print $2}' | xargs kill
 

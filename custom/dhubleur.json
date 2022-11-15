@@ -1,11 +1,11 @@
 {
     "welcome":
     {
-      "mp3": "dhubleur/in"
+      "mp3": "dhubleur"
     },
     "goodbye":
     {
-      "mp3": "dhubleur/out"
+      "mp3": "dhubleur"
     }
   }
   
