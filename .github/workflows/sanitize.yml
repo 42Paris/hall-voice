@@ -47,18 +47,6 @@ jobs:
           commit_message: 'CI: Sanitize mp3'
           commit_author: 'GitHub Actions <actions@github.com>'
 
-      - name: Post comment for sanitize
-        uses: actions/github-script@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'CI: mp3 files have been sanitized 🔉'
-            })
-
       - name: Check if .json file is present
         id: check-json
         continue-on-error: true
