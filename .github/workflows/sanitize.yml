@@ -32,6 +32,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run sanitize.py
+        id: check-sanitize
         run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
 
       - name: Commit changes
@@ -84,11 +85,14 @@ jobs:
             const checkCommands = '${{ steps.check-commands.outcome }}' == 'success'
             const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
             const checkFilesSize = '${{ steps.check-files-size.outcome }}' == 'success'
+            const checkSanitize = '${{ steps.check-sanitize.outcome }}' == 'success'
+
             var message = `CI:
               - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
               - ${checkJson ? '✅' : '❌'} .json file
               - ${checkFilesSize ? '✅' : '❌'} Files are under 1 Mo
               - ${checkFiles ? '✅' : '❌'} 20 song max
+              - ${checkSanitize ? '✅' : '❌'} Volume reduced and audio file(s) trimed
               `
             if (checkCommands && checkJson && checkFilesSize && checkFiles) {
               message += `
