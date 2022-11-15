@@ -36,6 +36,8 @@ jobs:
         run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
 
       - name: Commit changes
+        id: check-sanitize-commit
+        continue-on-error: true
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'CI: Sanitize mp3'
@@ -86,6 +88,7 @@ jobs:
             const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
             const checkFilesSize = '${{ steps.check-files-size.outcome }}' == 'success'
             const checkSanitize = '${{ steps.check-sanitize.outcome }}' == 'success'
+            const checkSanitizeCommit = '${{ steps.check-sanitize-commit.outcome }}' == 'success'
 
             var message = `CI:
               - ${checkCommands ? '✅' : '❌'} Check if you have the Hall-Voice on your intra shop
@@ -93,6 +96,7 @@ jobs:
               - ${checkFilesSize ? '✅' : '❌'} Audio files are under 1 Mo
               - ${checkFiles ? '✅' : '❌'} 20 max audio files
               - ${checkSanitize ? '✅' : '❌'} Volume reduced and audio files trimed by sanitize
+              - ${checkSanitizeCommit ? '✅' : '❌'} Sanitized sound commited
               `
             if (checkCommands && checkJson && checkFilesSize && checkFiles) {
               message += `
