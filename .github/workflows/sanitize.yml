@@ -88,11 +88,11 @@ jobs:
             const checkSanitize = '${{ steps.check-sanitize.outcome }}' == 'success'
 
             var message = `CI:
-              - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
-              - ${checkJson ? '✅' : '❌'} .json file
-              - ${checkFilesSize ? '✅' : '❌'} Files are under 1 Mo
-              - ${checkFiles ? '✅' : '❌'} 20 song max
-              - ${checkSanitize ? '✅' : '❌'} Volume reduced and audio file(s) trimed
+              - ${checkCommands ? '✅' : '❌'} Check if you have the Hall-Voice on your intra shop
+              - ${checkJson ? '✅' : '❌'} /custom/login.json file is present
+              - ${checkFilesSize ? '✅' : '❌'} Audio files are under 1 Mo
+              - ${checkFiles ? '✅' : '❌'} 20 max audio files
+              - ${checkSanitize ? '✅' : '❌'} Volume reduced and audio files trimed by sanitize
               `
             if (checkCommands && checkJson && checkFilesSize && checkFiles) {
               message += `
