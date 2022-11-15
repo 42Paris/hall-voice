@@ -41,6 +41,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           skip_checkout: true
+          ref: ${{ github.event.pull_request.head.sha }}
           file_pattern: ./mp3/
           commit_message: 'CI: Sanitize mp3'
           commit_author: 'GitHub Actions <actions@github.com>'
