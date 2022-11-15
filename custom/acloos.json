@@ -1,0 +1,11 @@
+
+{
+  "welcome":
+  {
+    "mp3": "acloos/in"
+  },
+  "goodbye":
+  {
+    "mp3": "acloos/out"
+  }
+}
