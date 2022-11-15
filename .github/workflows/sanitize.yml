@@ -42,7 +42,6 @@ jobs:
         with:
           commit_message: 'CI: Sanitize mp3'
           commit_author: 'GitHub Actions <actions@github.com>'
-          branch: ${{ github.event.pull_request.head.sha }}
 
       - name: Post comment for sanitize
         uses: actions/github-script@v3
