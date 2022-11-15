@@ -17,7 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }} # Force get PR's files
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
 
       - name: Install sox, jq and pip packages
         run: |
@@ -41,8 +42,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           skip_checkout: true
-          branch: ${{ github.event.pull_request.head.sha }}
-          repository: ${{ github.event.pull_request.head.repo.name }}
+          # branch: ${{ github.event.pull_request.head.sha }}
           file_pattern: ./mp3/
           commit_message: 'CI: Sanitize mp3'
           commit_author: 'GitHub Actions <actions@github.com>'
