@@ -40,7 +40,6 @@ jobs:
         continue-on-error: true
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
           file_pattern: ./mp3/
           commit_message: 'CI: Sanitize mp3'
           commit_author: 'GitHub Actions <actions@github.com>'
