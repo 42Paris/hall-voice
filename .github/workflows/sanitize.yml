@@ -84,11 +84,19 @@ jobs:
             const checkCommands = '${{ steps.check-commands.outcome }}' == 'success'
             const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
             const checkFilesSize = '${{ steps.check-files-size.outcome }}' == 'success'
-            const message = `CI:
+            var message = `CI:
               - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
               - ${checkJson ? '✅' : '❌'} .json file
-              - ${checkFilesSize ? '✅' : '❌'} files are under 1 Mo
-              - ${checkFiles ? '✅' : '❌'} 20 song max`
+              - ${checkFilesSize ? '✅' : '❌'} Files are under 1 Mo
+              - ${checkFiles ? '✅' : '❌'} 20 song max
+              `
+            if (checkCommands && checkJson && checkFilesSize && checkFiles) {
+              message += `
+              - ⌛ Everything looks good, awaiting staff approval`
+            } else {
+              message += `
+              - ❌ Something went wrong, check your PR`
+            }
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
