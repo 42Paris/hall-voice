@@ -35,7 +35,7 @@ if __name__ == "__main__":
     parser.add_argument('-r', '--remove',  default=False, action='store_true', help='Remove invalid files')
     parser.add_argument('-d', '--db',      type=float, default=-13.0, help='dB level to normalize (default: -13.0)')
     parser.add_argument('-l', '--length',  type=float, default=10.0, help='Length/duration in seconds (default: 10.0)')
-    parser.add_argument('path', nargs='*', help='Path to file or directory to sanitize')
+    parser.add_argument('path', default='', help='Path to file or directory to sanitize')
     args = parser.parse_args()
 
     if not args.path:

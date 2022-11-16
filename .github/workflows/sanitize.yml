@@ -34,6 +34,7 @@ jobs:
 
       - name: Run sanitize.py
         id: check-sanitize
+        continue-on-error: true
         run: echo $HOME/files.json | xargs python3 sanitize.py -v --
 
       - name: Commit changes
