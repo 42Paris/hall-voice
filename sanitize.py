@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
-import os, argparse, tempfile, sox
+import os, argparse, tempfile, sox, sys, json
 
 
 def sanitize_file(filename):
-    normalized_name = f"{filename}_normalized.mp3"
-
     tfm = sox.Transformer()
     tfm.set_globals(verbosity=1)
     tfm.set_input_format(file_type='mp3')
@@ -40,19 +38,21 @@ if __name__ == "__main__":
     parser.add_argument('path', nargs='*', help='Path to file or directory to sanitize')
     args = parser.parse_args()
 
+    if not args.path:
+        print('No args.path')
+        sys.exit()
+    
+    f = open(args.path, "r")
+    jsondata = json.load(f)
+
     if args.verbose:
         print('Path:', args.path)
+        print('Json data:', str(jsondata))
         print('dB level:', args.db)
         print('Length:', args.length)
         print('Remove invalid files:', args.remove, '\n')
 
-    for path in args.path:
-        if os.path.isfile(path):
-            sanitize_file(path)
-        elif os.path.isdir(path):
-            for root, dirs, files in os.walk(path):
-                for filename in files:
-                    sanitize_file(os.path.join(root, filename))
-        else:
-            print(f"File {path} does not exist.")
+    for filepath in jsondata:
+        if os.path.exists(filepath):
+            sanitize_file(filepath)
 

@@ -34,7 +34,7 @@ jobs:
 
       - name: Run sanitize.py
         id: check-sanitize
-        run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
+        run: echo $HOME/files.json | xargs python3 sanitize.py -v --
 
       - name: Commit changes
         id: check-sanitize-commit
