@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"jucheval/in"
+	},
+	"goodbye":
+	{
+		"mp3":"jucheval/out"
+	}
+}
