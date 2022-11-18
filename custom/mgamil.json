@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"mgamil/in"
+	},
+	"goodbye":
+	{
+		"mp3":"mgamil/out"
+	}
+}
