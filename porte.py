@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os, json, signal, sys, urllib, urllib2, time, subprocess, hashlib, glob
+import os, json, signal, sys, urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse, time, subprocess, hashlib, glob
 from random import *
 
 CONFIG_FILE = 'config.json'
@@ -14,7 +14,7 @@ def open_and_load_config():
         with open(CONFIG_FILE, 'r') as config_file:
             return json.loads(config_file.read())
     else:
-        print "File [%s] doesn't exist, aborting." % (CONFIG_FILE)
+        print("File [%s] doesn't exist, aborting." % (CONFIG_FILE))
         sys.exit(1)
 
 def signal_handler(signal, frame):
@@ -27,11 +27,11 @@ def say(txt, lang):
     hash = hashlib.md5(tmp.encode('utf-8')).hexdigest()
     fname = "cache/" + hash + ".mp3"
     if ((os.path.isfile(fname) == False) or (os.stat(fname).st_size == 0)):
-        urltts = config["tts"] + "?" + urllib.urlencode({'t':t, 'l':lang})
-        print urltts
-        urllib.urlretrieve(urltts, fname)
+        urltts = config["tts"] + "?" + urllib.parse.urlencode({'t':t, 'l':lang})
+        print(urltts)
+        urllib.request.urlretrieve(urltts, fname)
     cmd = config["player"] + [fname]
-    print cmd
+    print(cmd)
     subprocess.call(cmd)
 
 def welcome(login, prenom):
@@ -41,31 +41,31 @@ def welcome(login, prenom):
     jname = "custom/" + login + ".json"
     if (os.path.isfile(jname)):
         with open(jname, 'r') as custom_file:
-            print jname
+            print(jname)
             try:
                 j = json.loads(custom_file.read())
-                if (m  in j.keys()):
+                if (m  in list(j.keys())):
                     j = j[m]
-                print j
-                if ("txt" in j.keys()):
+                print(j)
+                if ("txt" in list(j.keys())):
                     msg = j["txt"]
-                if ("lang" in j.keys()):
+                if ("lang" in list(j.keys())):
                     lang = j["lang"]
-                if ("mp3" in j.keys()):
+                if ("mp3" in list(j.keys())):
                     mp3 = "mp3/" + j["mp3"]
                     if (os.path.isdir(mp3)):
                         mp3 = choice(glob.glob(mp3 + "/*.mp3"))
-                    print mp3
+                    print(mp3)
             except:
-                print "cannot load json"
+                print("cannot load json")
     if (msg == "" and mp3 == ""):
         msg = choice(config["msgs"][m]) + " " + prenom
     if (msg != ""):
-        print msg
+        print(msg)
         say(msg, lang)
     if (mp3 != ""):
         cmd = config["player"] + [mp3]
-        print cmd
+        print(cmd)
         subprocess.call(cmd)
     
 """
@@ -81,14 +81,14 @@ if __name__ == "__main__":
     url = config["host"] + "?pid=" + config["doors"][porte] + "&eid=0"
     while 1:
         try:
-            res = json.loads(urllib2.urlopen(url).read())
-            if ((res["id"] != last_id) and ("login" in res.keys()) and ("firstname" in res.keys())):
-                if (("pin" in res.keys()) and (res["pin"] != "") and ("rpin" in res.keys()) and (res["pin"] != res["rpin"])):
-                    print "game over"
-                    print "pid: %s, rpid: %s" % (res["pin"],  res["rpin"])
+            res = json.loads(urllib.request.urlopen(url).read())
+            if ((res["id"] != last_id) and ("login" in list(res.keys())) and ("firstname" in list(res.keys()))):
+                if (("pin" in list(res.keys())) and (res["pin"] != "") and ("rpin" in list(res.keys())) and (res["pin"] != res["rpin"])):
+                    print("game over")
+                    print("pid: %s, rpid: %s" % (res["pin"],  res["rpin"]))
                     say("game over", "en")
                 else:
-                    if ("usual_first_name" in res.keys()):
+                    if ("usual_first_name" in list(res.keys())):
                         welcome(res["login"], res["usual_first_name"])
                     else:
                         welcome(res["login"], res["firstname"])

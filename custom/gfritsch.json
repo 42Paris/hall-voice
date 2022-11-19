@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"gfritsch/in"
+	},
+	"goodbye":
+	{
+		"mp3":"gfritsch/out"
+	}
+}

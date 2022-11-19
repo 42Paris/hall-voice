@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "hrecolet/in"
+  },
+  "goodbye":
+  {
+    "mp3": "hrecolet/out"
+  }
+}
