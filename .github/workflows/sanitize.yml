@@ -17,7 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }} # Force get PR's files
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.head_ref }}
 
       - name: Install sox, jq and pip packages
         run: |
@@ -31,26 +32,21 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-#     - name: Run sanitize.py
-#       run: jq -r '.[]' ${HOME}/files.json | xargs python3 sanitize.py -v --
+      - name: Run sanitize.py
+        id: check-sanitize
+        continue-on-error: true
+        run: echo $HOME/files.json | xargs python3 sanitize.py -v --db -12.0 --
 
-#     - name: Commit changes
-#       uses: stefanzweifel/git-auto-commit-action@v4
-#       with:
-#         commit_message: 'CI: Sanitize mp3'
-#         commit_author: 'GitHub Actions <actions@github.com>'
-
-#     - name: Post comment for sanitize
-#       uses: actions/github-script@v3
-#       with:
-#         github-token: ${{ secrets.GITHUB_TOKEN }}
-#         script: |
-#           github.issues.createComment({
-#             issue_number: context.issue.number,
-#             owner: context.repo.owner,
-#             repo: context.repo.repo,
-#             body: 'CI: mp3 files have been sanitized 🔉'
-#           })
+      - name: Commit changes
+        id: check-sanitize-commit
+        continue-on-error: true
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          skip_checkout: true
+          # branch: ${{ github.event.pull_request.head.sha }}
+          file_pattern: ./mp3/
+          commit_message: 'CI: Sanitize mp3'
+          commit_author: 'GitHub Actions <actions@github.com>'
 
       - name: Check if .json file is present
         id: check-json
@@ -84,11 +80,24 @@ jobs:
             const checkCommands = '${{ steps.check-commands.outcome }}' == 'success'
             const checkFiles = '${{ steps.check-files.outcome }}' == 'success'
             const checkFilesSize = '${{ steps.check-files-size.outcome }}' == 'success'
-            const message = `CI:
-              - ${checkCommands ? '✅' : '❌'} HallVoice check on intra shop
-              - ${checkJson ? '✅' : '❌'} .json file
-              - ${checkFilesSize ? '✅' : '❌'} files are under 1 Mo
-              - ${checkFiles ? '✅' : '❌'} 20 song max`
+            const checkSanitize = '${{ steps.check-sanitize.outcome }}' == 'success'
+            const checkSanitizeCommit = '${{ steps.check-sanitize-commit.outcome }}' == 'success'
+
+            var message = `CI:
+              - ${checkCommands ? '✅' : '❌'} Check if you have the Hall-Voice on your intra shop
+              - ${checkJson ? '✅' : '❌'} /custom/login.json file is present
+              - ${checkFilesSize ? '✅' : '❌'} Audio files are under 1 Mo
+              - ${checkFiles ? '✅' : '❌'} 20 max audio files
+              - ${checkSanitize ? '✅' : '❌'} Volume reduced and audio files trimed by sanitize
+              - ${checkSanitizeCommit ? '✅' : '❌'} Sanitized sound commited
+              `
+            if (checkCommands && checkJson && checkFilesSize && checkFiles) {
+              message += `
+              - ⌛ Everything looks good, awaiting staff approval`
+            } else {
+              message += `
+              - ❌ Something went wrong, check your PR`
+            }
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
