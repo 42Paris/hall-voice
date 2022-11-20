@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "mmourdal/in/"
+  },
+  "goodbye":
+  {
+    "mp3": "mmourdal/out/"
+  }
+}
