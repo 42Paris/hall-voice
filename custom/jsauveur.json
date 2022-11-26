@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3":"jsauveur/in"
+	},
+	"goodbye":
+	{
+		"mp3":"jsauveur/out"
+	}
+}
