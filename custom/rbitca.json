@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "rbitca/in"
+  },
+  "goodbye":
+  {
+    "mp3": "rbitca/out"
+  }
+}
