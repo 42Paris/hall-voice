@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "aroma/in"
+  },
+  "goodbye":
+  {
+    "mp3": "aroma/out"
+  }
+}
