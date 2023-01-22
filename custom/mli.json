@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "mli/in"
+  },
+  "goodbye":
+  {
+    "mp3": "mli/out"
+  }
+}
