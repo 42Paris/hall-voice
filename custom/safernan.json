@@ -1,10 +1,10 @@
 {
 	"welcome":
 	{
-		"mp3":"akdjebal/"
+		"mp3":"akdjebal/in/"
 	},
 	"goodbye":
 	{
-		"mp3":"akdjebal/"
+		"mp3":"akdjebal/out/"
 	}
 }
