@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os, argparse, tempfile, sox, sys, json
+import os, argparse, tempfile, sox, sys, json, shutil
 
 
 def sanitize_file(filename):
@@ -18,7 +18,7 @@ def sanitize_file(filename):
         with tempfile.NamedTemporaryFile() as tmpfile:
             tmpname = f"{tmpfile.name}.mp3"
             tfm.build(input_filepath=filename, output_filepath=tmpname)
-            os.rename(tmpname, filename)
+            shutil.move(tmpname, filename)
     except Exception as e:
         if args.verbose is True:
             print(e)
