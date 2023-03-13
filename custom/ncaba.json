@@ -1,10 +1,10 @@
 {
-	"welcome":
-	{
-		"mp3": "ncaba/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "ncaba/sortie"
-	}
+  "welcome":
+  {
+    "mp3": "ncaba/in"
+  },
+  "goodbye":
+  {
+    "mp3": "ncaba/out"
+  }
 }
