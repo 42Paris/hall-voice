@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "artblin/in/"
+  },
+  "goodbye":
+  {
+    "mp3": "artblin/out/"
+  }
+}
