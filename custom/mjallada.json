@@ -1,0 +1,10 @@
+{
+   "welcome":
+   {
+     "mp3": "mjallada/in"
+   },
+   "goodbye":
+   {
+     "mp3": "mjallada/out"
+   }
+ }
