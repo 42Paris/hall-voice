@@ -4,3 +4,4 @@ config.ini
 .env
 .envrc
 .DS_Store
+.idea
