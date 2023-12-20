@@ -36,7 +36,7 @@ def read_config(file_path):
 def create_consumer(kafka_servers, topic, group_id, username, password):
     # Consumer configuration
     conf = {
-        'bootstrap.servers': 'redpanda-0.int.42paris.fr',
+        'bootstrap.servers': kafka_servers,
         'group.id': group_id,
         'security.protocol': 'SASL_SSL',
         'sasl.mechanism': 'SCRAM-SHA-512',
