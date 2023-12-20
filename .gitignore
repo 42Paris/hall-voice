@@ -1,4 +1,6 @@
 cache/
 config.json
+config.ini
+.env
 .envrc
 .DS_Store
