@@ -50,8 +50,13 @@ def create_consumer(kafka_servers, topic, group_id, username, password):
     consumer = Consumer(conf)
 
     # Subscribe to the topic
-    consumer.subscribe(topic)
-
+    def my_assign (consumer, partitions):
+        for p in partitions:
+            p.offset = OFFSET_END
+        print('assign', partitions)
+        consumer.assign(partitions)
+    # Subscribe to the topic
+    consumer.subscribe(topic, on_assign=my_assign)
     return consumer
 
 def consume_messages(consumer, building, welcome, goodbye):
