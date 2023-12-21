@@ -1,3 +1,6 @@
+sox
+requests_oauthlib
+oauthlib
 gtts
 playsound
 confluent_kafka
