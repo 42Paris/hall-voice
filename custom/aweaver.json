@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "aweaver/in"
+  },
+  "goodbye":
+  {
+    "mp3": "aweaver/out"
+  }
+}
