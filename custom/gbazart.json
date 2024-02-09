@@ -1,0 +1,10 @@
+{
+	"welcome":
+	{
+		"mp3": "gbazart/in"
+	},
+	"goodbye":
+	{
+		"mp3": "gbazart/out"
+	}
+}
