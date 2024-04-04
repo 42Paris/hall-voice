@@ -24,6 +24,7 @@ jobs:
         run: |
           sudo apt-get -qq update
           sudo apt-get -qq -y install libsox-fmt-mp3 sox jq
+          python3 -m pip install numpy typing_extensions
           python3 -m pip install -r requirements.txt
 
       - name: Get changed files
