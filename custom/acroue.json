@@ -1,0 +1,10 @@
+{
+  "welcome":
+  {
+    "mp3": "acroue/in"
+  },
+  "goodbye":
+  {
+    "mp3": "acroue/out"
+  }
+}
