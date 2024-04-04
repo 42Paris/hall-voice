@@ -4,3 +4,5 @@ oauthlib
 gtts
 playsound
 confluent_kafka
+redis
+requests
