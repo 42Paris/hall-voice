@@ -1,10 +1,10 @@
 {
-        "welcome":
-        {
-                "mp3":"aguiot--/in"
-        },
-        "goodbye":
-        {
-                "mp3":"aguiot--/out"
-        }
+	"welcome":
+	{
+		"txt":"Reach tu tourne"
+	},
+	"goodbye":
+	{
+		"txt":"squish squish"
+	}
 }
