@@ -7,3 +7,4 @@ config.ini
 .idea
 __pycache__
 venv
+login.list
