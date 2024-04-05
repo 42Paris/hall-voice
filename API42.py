@@ -1,18 +1,21 @@
+import datetime
 import requests
+import redis
 
 
 class API42(object):
     def __init__(self, conf):
+        self.redis = redis.Redis(host='127.0.0.1', port=6379, db=0)
         apiKey = conf.getAPIkeys()
         self.apiUID = apiKey[0]
         self.apiSEC = apiKey[1]
         self.token = self.getToken()
 
-    def getToken(self):
-        print("Getting token")
+    def getToken(self) -> str | None:
+        print(f"[{datetime.datetime.now()}] Getting token")
         r = requests.post(
-            "https://api.intra.42.fr/oauth/token?grant_type=client_credentials&client_id=" + self.apiUID + "&client_secret="
-            + self.apiSEC)
+            "https://api.intra.42.fr/oauth/token?grant_type=client_credentials&client_id=" + self.apiUID +
+            "&client_secret=" + self.apiSEC)
         if r.status_code == 200:
             print("Token getted")
             return r.json()["access_token"]
@@ -20,19 +23,29 @@ class API42(object):
             print("Error while getting token")
             return None
 
-    def getUsualName(self, login) -> str:
+    def getUsualName(self, login) -> str | None:
         if self.token is None:
             self.getToken()
         url = "https://api.intra.42.fr/v2/users/" + login + "?access_token=" + self.token
-        intra = requests.get(url)
-        # If 42api return stuff
-        if intra is not None and intra.status_code == 200:
-            # Get the usual name
-            firstname = intra.json()["usual_first_name"]
-            # If there is no usual name, take the first_name
-            if firstname is None:
-                firstname = intra.json()["first_name"]
-            return firstname
+        cached_data = self.redis.get(f"login: {login}")
+        if cached_data:
+            print(f"[{datetime.datetime.now()}] API cache data found for {login}")
+            return str(cached_data.decode('utf-8'))
         else:
-            self.getToken()
-            return ""
+            print(f"[{datetime.datetime.now()}] API cache data not found for {login}, putting in cache")
+            intra = requests.get(url)
+            if intra.status_code == 404:
+                print("API Error 404, returning None")
+                return None
+            if intra.status_code != 200:
+                self.getToken()
+                intra = requests.get(url)
+            # If 42api return stuff and status code is 200
+            if intra is not None and intra.status_code == 200:
+                # Get the usual name
+                firstname = intra.json()["usual_first_name"]
+                # If there is no usual name, take the first_name
+                if firstname is None:
+                    firstname = intra.json()["first_name"]
+                self.redis.set(f"login: {login}", firstname, ex=15778800)  # Cache the firstname for 6 month
+                return firstname
