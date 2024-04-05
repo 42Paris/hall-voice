@@ -1,8 +1,10 @@
+import sys
 from confluent_kafka import Consumer, KafkaException, KafkaError, OFFSET_END
+from Messages import Messages
 
 
 class Kafka(object):
-    def __init__(self, conf):
+    def __init__(self, conf, api):
         # Consumer configuration
         kafkaConf = {
             'bootstrap.servers': conf.getKafkaServer(),
@@ -28,6 +30,30 @@ class Kafka(object):
         # Subscribe to the topic
         consumer.subscribe(conf.getTopic(), on_assign=my_assign)
         self.consumer = consumer
+        self.Messages = Messages(conf, api)
 
-    def getConsumer(self):
-        return self.consumer
+    def consume_messages(self):
+        try:
+            while True:
+                # Poll for messages
+                msg = self.consumer.poll(1.0)
+
+                if msg is None:
+                    continue
+                if msg.error():
+                    if msg.error().code() == KafkaError.PARTITION_EOF:
+                        # End of partition event
+                        sys.stderr.write(
+                            '%% %s [%d] reached end at offset %d\n' % (msg.topic(), msg.partition(), msg.offset()))
+                    elif msg.error():
+                        raise KafkaException(msg.error())
+                else:
+                    # Process the message
+                    self.Messages.processMessage(msg.value().decode('utf-8'))
+        except KeyboardInterrupt:
+            # Handle keyboard interrupt
+            pass
+        finally:
+            print('CTRL+C Pressed, closing properly Kafka consumer')
+            # Close down consumer to commit final offsets.
+            self.consumer.close()
