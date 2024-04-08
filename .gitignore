@@ -8,3 +8,4 @@ config.ini
 __pycache__
 venv
 login.list
+firstname.list
