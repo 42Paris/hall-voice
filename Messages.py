@@ -81,19 +81,19 @@ class Messages(object):
                 self.playMP3(mp3_fp)
             else:
                 print(f"[{datetime.datetime.now()}] TTS cache not found, putting in cache")
-            try:
-                # Generate speech using gTTS and save to a BytesIO object
-                tts = gTTS(text=txt, lang=lang)
-                # Create and write the TTS to a BytesIO
-                mp3_fp = BytesIO()
-                tts.write_to_fp(mp3_fp)
-                # Convert the MP3 BytesIO object to WAV format in memory
-                mp3_fp.seek(0)  # Reset the file pointer to the beginning
-                self.redis.set(txt+lang, mp3_fp.read())
-                mp3_fp.seek(0)
-                self.playMP3(mp3_fp)
-            except gTTSError as e:
-                print(f"HallvoiceERROR TTS error:\n{e}")
+                try:
+                    # Generate speech using gTTS and save to a BytesIO object
+                    tts = gTTS(text=txt, lang=lang)
+                    # Create and write the TTS to a BytesIO
+                    mp3_fp = BytesIO()
+                    tts.write_to_fp(mp3_fp)
+                    # Convert the MP3 BytesIO object to WAV format in memory
+                    mp3_fp.seek(0)  # Reset the file pointer to the beginning
+                    self.redis.set(txt+lang, mp3_fp.read())
+                    mp3_fp.seek(0)
+                    self.playMP3(mp3_fp)
+                except gTTSError as e:
+                    print(f"HallvoiceERROR TTS error:\n{e}")
         else:
             print(f"[{datetime.datetime.now()}] Cannot TTS, var txt is None")
             cache = self.redis.get("HallvoiceERROR")
