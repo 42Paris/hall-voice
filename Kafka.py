@@ -27,8 +27,10 @@ class Kafka(object):
             print('assign', partitions)
             consumer.assign(partitions)
 
-        # Subscribe to the topic
+        # Subscribe to the topic from latest message
         consumer.subscribe(conf.getTopic(), on_assign=my_assign)
+        # Subscribe to the topic normaly
+        # consumer.subscribe(conf.getTopic())
         self.consumer = consumer
         self.Messages = Messages(conf, api)
 

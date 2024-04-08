@@ -30,15 +30,23 @@ class API42(object):
         cached_data = self.redis.get(f"login: {login}")
         if cached_data:
             print(f"[{datetime.datetime.now()}] API cache data found for {login}")
+            # Return firstname if it is in redis cache
             return str(cached_data.decode('utf-8'))
         else:
             print(f"[{datetime.datetime.now()}] API cache data not found for {login}, putting in cache")
             intra = requests.get(url)
             if intra.status_code == 404:
-                print("API Error 404, returning None")
+                print(f"[{datetime.datetime.now()}] API Error 404, returning None, Firstname in CA will be use")
                 return None
+            elif intra.status_code == 429:
+                print(f"[{datetime.datetime.now()}] API42 rate limited, waiting {intra.headers['Retry-After']} seconds")
+                return
             if intra.status_code != 200:
+                print(f"[{datetime.datetime.now()}] Error while getting user name for {login},"
+                      f" getting new token and retry")
+                # Get new token if status code != 200
                 self.getToken()
+                # Retry call
                 intra = requests.get(url)
             # If 42api return stuff and status code is 200
             if intra is not None and intra.status_code == 200:
@@ -47,5 +55,6 @@ class API42(object):
                 # If there is no usual name, take the first_name
                 if firstname is None:
                     firstname = intra.json()["first_name"]
+                    # Putting in redis cache
                 self.redis.set(f"login: {login}", firstname, ex=15778800)  # Cache the firstname for 6 month
                 return firstname

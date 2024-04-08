@@ -73,13 +73,13 @@ class Messages(object):
     def say(self, txt, lang):
         mp3_fp = BytesIO()
         if txt is not None and txt != "":
-            cache = self.redis.get(txt+lang)
-            if cache:
+            cache = self.redis.get(txt+lang)  # Get the TTS from cache
+            if cache:  # If TTS is cached, play it
                 print(f"[{datetime.datetime.now()}] TTS cache getted!")
                 mp3_fp.write(cache)
-                mp3_fp.seek(0)
+                mp3_fp.seek(0)  # Reset the file pointer to the beginning
                 self.playMP3(mp3_fp)
-            else:
+            else:  # If TTS is NOT cached, cache it AND play it...
                 print(f"[{datetime.datetime.now()}] TTS cache not found, putting in cache")
                 try:
                     # Generate speech using gTTS and save to a BytesIO object
@@ -90,15 +90,15 @@ class Messages(object):
                     # Convert the MP3 BytesIO object to WAV format in memory
                     mp3_fp.seek(0)  # Reset the file pointer to the beginning
                     self.redis.set(txt+lang, mp3_fp.read())
-                    mp3_fp.seek(0)
+                    mp3_fp.seek(0)  # Reset the file pointer to the beginning, again...
                     self.playMP3(mp3_fp)
-                except gTTSError as e:
-                    print(f"HallvoiceERROR TTS error:\n{e}")
+                except gTTSError as e:  # If we break gTTS API with rate-limit
+                    print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
         else:
             print(f"[{datetime.datetime.now()}] Cannot TTS, var txt is None")
             cache = self.redis.get("HallvoiceERROR")
             if cache:
-                print("HallvoiceERROR TTS cached")
+                print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS cached")
                 self.playMP3(cache)
             else:
                 print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS not cached, caching him")
@@ -111,7 +111,7 @@ class Messages(object):
                     mp3_fp.seek(0)
                     self.playMP3(mp3_fp)
                 except gTTSError as e:
-                    print(f"HallvoiceERROR TTS error:\n{e}")
+                    print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
 
     @staticmethod
     def playMP3(mp3):
