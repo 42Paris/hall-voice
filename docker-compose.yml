@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  hallvoice:
+    hostname: hallvoice
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/hallvoice
+      - ./conf:/hallvoice/conf
+    networks:
+      - default
+  redis:
+    image: redis:latest
+    hostname: redis
+    networks:
+      - default
+networks:
+  default:
