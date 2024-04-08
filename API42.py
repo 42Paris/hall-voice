@@ -17,10 +17,10 @@ class API42(object):
             "https://api.intra.42.fr/oauth/token?grant_type=client_credentials&client_id=" + self.apiUID +
             "&client_secret=" + self.apiSEC)
         if r.status_code == 200:
-            print("Token getted")
+            print(f"[{datetime.datetime.now()}] Token getted")
             return r.json()["access_token"]
         else:
-            print("Error while getting token")
+            print(f"[{datetime.datetime.now()}] Error while getting token")
             return None
 
     def getUsualName(self, login) -> str | None:
