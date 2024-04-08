@@ -1,4 +1,5 @@
 import configparser
+import datetime
 import random
 import time
 import redis
@@ -19,6 +20,13 @@ def api_call(start_l, end_l, access_token):
                     # Wait a random time for rate limit
                     time.sleep(random.randint(0, 3))
                     user = requests.get(f"https://api.intra.42.fr/v2/users/{line.strip()}?access_token={access_token}")
+                    if user.status_code == 404:
+                        print(f"[{datetime.datetime.now()}] API Error 404, returning None.")
+                        return None
+                    elif user.status_code == 429:
+                        print(f"[{datetime.datetime.now()}] API42 rate limited, reduce number of threads to avoid rate"
+                              f"limiting")
+                        return
                     if user is not None and user.status_code == 200:
                         # Get the usual name
                         firstname = user.json()["usual_first_name"]
@@ -41,7 +49,7 @@ token = urltoken.json()['access_token']
 
 if urltoken.status_code == 200:
     print("Successfully getted a token")
-    nb_threads = 16
+    nb_threads = 12
     r = redis.Redis(host='127.0.0.1', port=6379, db=0)
     with open("login.list", "r") as f:
         file = f.readlines()
