@@ -16,6 +16,7 @@ def api_call(start_l, end_l, access_token):
             else:
                 cache = r.get(f"login: {line.strip()}")
                 if cache is None:
+                    # Wait a random time for rate limit
                     time.sleep(random.randint(0, 3))
                     user = requests.get(f"https://api.intra.42.fr/v2/users/{line.strip()}?access_token={access_token}")
                     if user is not None and user.status_code == 200:
@@ -28,8 +29,6 @@ def api_call(start_l, end_l, access_token):
                         r.set(f"login: {line.strip()}", firstname, ex=15778800)
                     else:
                         print(f"Failed to add login {line.strip()} in cache because error {user}")
-                # else:
-                #     print(f"{line.strip()} already cached")
 
 
 with open("config.ini", "r"):
@@ -53,8 +52,7 @@ if urltoken.status_code == 200:
             # Make sure to handle the last chunk properly if it has fewer lines
             end_line = start_line + chunk_size if i < nb_threads - 1 else len(file)
             thread = threading.Thread(target=api_call, args=(start_line, end_line, token))
-            # threads.append(thread)
-            # time.sleep(2)
+            threads.append(thread)
             thread.start()
         for thread in threads:
             thread.join()
