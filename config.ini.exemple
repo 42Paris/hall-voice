@@ -1,16 +1,16 @@
 [kafka_conf]
-kafka_servers = 127.0.0.1
-topic = <topic-name>
-group_id = <group-name>
-username = <user-name>
-password = <password>
+kafka_servers = <redpanda>
+topic = <topic>
+group_id = <group_id>
+username = <user>
+password = <passwd>
 
 [42api]
-uid = <My app UID>
-secret = <TOP SECRET DO NOT PUSH ME>
+uid = <API42-UID-key>
+secret = <API42-Top-Secret-Do_no_push_me>
 
 [building]
-name = BESS
+name = <where>
 
 [welcome]
 message1 = Bonjour <name>
