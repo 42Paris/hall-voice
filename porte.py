@@ -14,4 +14,4 @@ if __name__ == "__main__":
         except FileNotFoundError as err:
             print(f"Error reading/opening configuration file: {err}")
     else:
-        print("Where conf file? Use me like this!\npython3 porte.py config.yaml")
+        print("Where conf file? Use me like this!\n\tpython3 porte.py config.yaml")
