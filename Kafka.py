@@ -59,3 +59,6 @@ class Kafka(object):
             print('CTRL+C Pressed, closing properly Kafka consumer')
             # Close down consumer to commit final offsets.
             self.consumer.close()
+
+    def close(self):
+        self.consumer.close()
