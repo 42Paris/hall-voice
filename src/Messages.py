@@ -55,7 +55,10 @@ class Messages(object):
                             pass
                     elif "txt" in j[kind]:
                         lang = j[kind]["lang"] if "lang" in j[kind] else "fr"
-                        self.say(j[kind]["txt"], lang)
+                        if isinstance(j[kind]["txt"], list):
+                            self.say(j[kind]["txt"][randint(0, len(j[kind]["txt"]) - 1)], lang)
+                        elif isinstance(j[kind]["txt"], str):
+                            self.say(j[kind]["txt"], lang)
                 else:
                     self.genericMessage(firstname, kind)
         except FileNotFoundError as e:
