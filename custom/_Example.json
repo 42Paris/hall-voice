@@ -1,0 +1,23 @@
+// To make your custom mp3 files working, please use the following JSON template
+{
+// First, you have to explicitly have a welcome and goodbye part
+	"welcome":
+	{// Choses between `mp3` OR `txt`
+		// When `mp3` is used, Only ONE path is required
+		// It could be a single mp3 file
+		"mp3":"mylogin/bonjour.mp3",
+		// OR a folder like so to find and play a random mp3 found in this path
+		"mp3":"mylogin/in"
+	},
+	"goodbye":
+	{// Again, choses between `mp3` or `txt`
+		// When `txt` is used, it generate a TTS with google (python3-gTTS):
+		// You can make one like so
+        "txt": "Aurevoir hallvoice!",
+		// OR you can make a list, randominette will be use to choose a random txt
+		"txt": ["Bonsoir hallvoice", "Adieu hallvoice", "Tchao le hallvoice"],
+		// By default TTS is in french, you can use another language with key `lang`
+		// List of available language here: https://gtts.readthedocs.io/en/latest/_modules/gtts/lang.html
+		"lang": "zh-CN"
+	}
+}
