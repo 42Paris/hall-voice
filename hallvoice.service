@@ -1,0 +1,11 @@
+[Unit]
+Description=HallVoice
+After=network.target redis.service
+
+[Service]
+User=bocal
+ExecStart=/usr/bin/python3 /home/bocal/hall-voice/src/porte.py /home/bocal/hall-voice/src/config.ini
+Restart=always
+
+[Install]
+WantedBy=default.target
