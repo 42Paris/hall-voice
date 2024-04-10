@@ -1,3 +1,4 @@
+import sys
 import redis
 import urllib.parse
 import ipaddress
@@ -28,13 +29,13 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                     self.send_response(200)
                     self.send_header('Content-type', 'text/html')
                     self.end_headers()
-                    self.wfile.write(f"Login {purge_value[0]} found in cache, purging...".encode())
+                    self.wfile.write(f"Login {purge_value[0]} purged from cache.".encode())
                 else:
                     self.send_response(404)
                     # If login not found in cache
                     self.send_header('Content-type', 'text/html')
                     self.end_headers()
-                    self.wfile.write(f"Login not found: {purge_value[0]} cannot purge from cache".encode())
+                    self.wfile.write(f"Login not found: {purge_value[0]} not in cache".encode())
             else:
                 # If no purge parameter, send man
                 self.send_response(400)
@@ -51,5 +52,5 @@ def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    conf = Conf("config.ini")
+    conf = Conf(sys.argv[1])
     run()
