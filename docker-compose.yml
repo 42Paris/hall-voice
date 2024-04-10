@@ -3,10 +3,20 @@ services:
   hallvoice:
     hostname: hallvoice
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.porte
     volumes:
       - ./src:/hallvoice
-      - ./conf:/hallvoice/conf
+      - ./config:/hallvoice/conf
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    networks:
+      - default
+  purge_api:
+    hostname: purgeAPI
+    build:
+      dockerfile: Dockerfile.API
+    volumes:
+      - ./src:/purgeAPI
     networks:
       - default
   redis:
