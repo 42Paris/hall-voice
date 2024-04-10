@@ -9,7 +9,7 @@ from pygame import mixer
 
 
 class Messages(object):
-    def __init__(self, conf, api):
+    def __init__(self, conf, api) -> None:
         self.redis = redis.Redis(host='127.0.0.1', port=6379, db=0)
         self.welcomeMsg = conf.getWelcome()
         self.goodbyeMsg = conf.getGoodbye()
@@ -17,7 +17,7 @@ class Messages(object):
         self.api = api
         mixer.init()
 
-    def processMessage(self, msg):
+    def processMessage(self, msg: str) -> None:
         data = json.loads(msg)
         if data["firstname"] == "chantier":
             return
@@ -39,7 +39,7 @@ class Messages(object):
         else:
             self.genericMessage(firstname, kind)
 
-    def playCustomSound(self, kind, jsonFile, firstname):
+    def playCustomSound(self, kind: str, jsonFile: str, firstname: str) -> None:
         kind = "welcome" if kind == "in" else "goodbye"
         try:
             with open(jsonFile, 'r') as custom_file:
@@ -64,7 +64,7 @@ class Messages(object):
         except FileNotFoundError as e:
             print(f"Custom HallVoice for {firstname} not found:\n{e}")
 
-    def genericMessage(self, firstname, kind):
+    def genericMessage(self, firstname: str, kind: str) -> None:
         tts = ""
         if kind == "welcome" or kind == "in":
             tts = self.welcomeMsg[randint(0, len(self.welcomeMsg) - 1)][1].replace("<name>", firstname)
@@ -73,7 +73,7 @@ class Messages(object):
         print(f"[{datetime.datetime.now()}] {tts}")
         self.say(tts, "fr")
 
-    def say(self, txt, lang):
+    def say(self, txt: str, lang: str) -> None:
         mp3_fp = BytesIO()
         if txt is not None and txt != "":
             cache = self.redis.get(txt+lang)  # Get the TTS from cache
@@ -117,7 +117,7 @@ class Messages(object):
                     print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
 
     @staticmethod
-    def playMP3(mp3):
+    def playMP3(mp3) -> None:
         mixer.music.load(mp3)
         mixer.music.play()
         while mixer.music.get_busy():
