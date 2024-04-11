@@ -4,12 +4,12 @@ import redis
 
 
 class API42(object):
-    def __init__(self, conf):
+    def __init__(self, conf) -> None:
         self.redis = redis.Redis(host='127.0.0.1', port=6379, db=0)
         apiKey = conf.getAPIkeys()
-        self.apiUID = apiKey[0]
-        self.apiSEC = apiKey[1]
-        self.token = self.getToken()
+        self.apiUID: str = apiKey[0]
+        self.apiSEC: str = apiKey[1]
+        self.token: str = self.getToken()
 
     def getToken(self) -> str | None:
         print(f"[{datetime.datetime.now()}] Getting token")
