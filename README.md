@@ -54,7 +54,7 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
 - Q: I want to change a song, do I have to buy hallvoice again?
   - A: No
 - Q: Code is garbage, can I improve it?
-  - I guess... Yes you can? Again always do a [PR](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork)
+  - I guess... Yes you can? You can try to do a [PR](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork)
 
 ## Staff
 - Q: I am the bocal, how to purge cache from a login?
@@ -69,6 +69,6 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - it consume ~300M of disk space
   - 39888 TTS cached (2493 firstname * 16 welcome and goodbye message)
   - ~5300 login is used to cache firstnames
-  - Volume is at maximum in `alsamixer`
+- Volume is at maximum in `alsamixer`
 
 ###### Made with love by 42Paris team SI
