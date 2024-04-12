@@ -12,9 +12,10 @@ from gtts import gTTS, gTTSError
 class Messages(object):
     def __init__(self, conf, api) -> None:
         self.redis = redis.Redis(host=conf.getRedisHost(), port=conf.getRedisPort(), db=0)
-        self.welcomeMsg = conf.getWelcome()
-        self.goodbyeMsg = conf.getGoodbye()
-        self.buildingName = conf.getBuilding()
+        self.welcomeMsg: list[tuple[str, str]] = conf.getWelcome()
+        self.goodbyeMsg: list[tuple[str, str]] = conf.getGoodbye()
+        self.buildingName: str = conf.getBuilding()
+        self.redis_ttl: int = conf.getRedisTTL()
         self.api = api
         pygame.mixer.init()
 
@@ -25,14 +26,14 @@ class Messages(object):
         if self.buildingName != data["building"]:
             return
         print(f"[{datetime.datetime.now()}] NEW MESSAGE: {msg}")
-        kind = data['kind']
-        login = data['login']
-        firstname = ""
+        kind: str = data['kind']
+        login: str = data['login']
+        firstname: str = ""
         if login is not None and login != "":
-            firstname = self.api.getUsualName(login)
+            firstname: str = self.api.getUsualName(login)
         if firstname is None or firstname == "":
-            firstname = data["firstname"]
-        jsonFile = "custom/" + login + ".json"
+            firstname:str = data["firstname"]
+        jsonFile: str = "custom/" + login + ".json"
         if os.path.isfile(jsonFile):
             print(f"[{datetime.datetime.now()}] Custom HallVoice for " + login)
             self.playCustomSound(kind, jsonFile, firstname)
@@ -41,7 +42,7 @@ class Messages(object):
             self.genericMessage(firstname, kind)
 
     def playCustomSound(self, kind: str, jsonFile: str, firstname: str) -> None:
-        kind = "welcome" if kind == "in" else "goodbye"
+        kind: str = "welcome" if kind == "in" else "goodbye"
         try:
             with open(jsonFile, 'r') as custom_file:
                 j = json.loads(custom_file.read())
@@ -60,7 +61,7 @@ class Messages(object):
                             self.playError()
 
                     elif "txt" in j[kind]:
-                        lang = j[kind]["lang"] if "lang" in j[kind] else "fr"
+                        lang: str = j[kind]["lang"] if "lang" in j[kind] else "fr"
                         if isinstance(j[kind]["txt"], list):
                             self.say(j[kind]["txt"][randint(0, len(j[kind]["txt"]) - 1)], lang)
                         elif isinstance(j[kind]["txt"], str):
@@ -71,11 +72,11 @@ class Messages(object):
             print(f"Custom HallVoice for {firstname} not found:\n{e}")
 
     def genericMessage(self, firstname: str, kind: str) -> None:
-        tts = ""
+        tts: str = ""
         if kind == "welcome" or kind == "in":
-            tts = self.welcomeMsg[randint(0, len(self.welcomeMsg) - 1)][1].replace("<name>", firstname)
+            tts: str = self.welcomeMsg[randint(0, len(self.welcomeMsg) - 1)][1].replace("<name>", firstname)
         elif kind == "goodbye" or kind == "out":
-            tts = self.goodbyeMsg[randint(0, len(self.goodbyeMsg) - 1)][1].replace("<name>", firstname)
+            tts: str = self.goodbyeMsg[randint(0, len(self.goodbyeMsg) - 1)][1].replace("<name>", firstname)
         print(f"[{datetime.datetime.now()}] {tts}")
         self.say(tts, "fr")
 
@@ -97,7 +98,7 @@ class Messages(object):
                     tts.write_to_fp(mp3_fp)
                     # Convert the MP3 BytesIO object to WAV format in memory
                     mp3_fp.seek(0)  # Reset the file pointer to the beginning
-                    self.redis.set(txt+lang, mp3_fp.read())
+                    self.redis.set(txt+lang, mp3_fp.read(), ex=self.redis_ttl)
                     self.playMP3(mp3_fp)
                 except gTTSError as e:  # If we break gTTS API with rate-limit
                     print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
@@ -127,7 +128,7 @@ class Messages(object):
                 tts.write_to_fp(mp3_fp)
                 # Convert the MP3 BytesIO object to WAV format in memory
                 mp3_fp.seek(0)  # Reset the file pointer to the beginning
-                self.redis.set("HallvoiceERROR", mp3_fp.read())
+                self.redis.set("HallvoiceERROR", mp3_fp.read(), ex=self.redis_ttl)
                 self.playMP3(mp3_fp)
             except gTTSError as e:
                 print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")

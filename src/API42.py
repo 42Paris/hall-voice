@@ -6,7 +6,8 @@ import redis
 class API42(object):
     def __init__(self, conf) -> None:
         self.redis = redis.Redis(host='127.0.0.1', port=6379, db=0)
-        apiKey = conf.getAPIkeys()
+        self.redis_ttl: int = conf.getRedisTTL()
+        apiKey: list[str] = conf.getAPIkeys()
         self.apiUID: str = apiKey[0]
         self.apiSEC: str = apiKey[1]
         self.token: str = self.getToken()
@@ -56,5 +57,5 @@ class API42(object):
                 if firstname is None:
                     firstname = intra.json()["first_name"]
                     # Putting in redis cache
-                self.redis.set(f"login: {login}", firstname, ex=15778800)  # Cache the firstname for 6 month
+                self.redis.set(f"login: {login}", firstname, ex=self.redis_ttl)  # Cache the firstname for 6 month
                 return firstname
