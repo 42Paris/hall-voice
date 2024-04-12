@@ -19,5 +19,6 @@
 		"_comment": "By, default TTS is in french, you can use another language with key `lang`",
 		"lang": "zh-CN",
 		"_comment": "List of available language here: https://gtts.readthedocs.io/en/latest/_modules/gtts/lang.html"
-	}
+	},
+	"_comment": "FOR THE LOVE OF GOD, please remove comments before pushing your json :)"
 }
