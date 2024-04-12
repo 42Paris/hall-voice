@@ -74,3 +74,5 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
 - Volume is at maximum in `alsamixer`
 
 ###### Made with love by 42Paris team SI
+
+###### Soon, Hallvoice V4 in Golang!
