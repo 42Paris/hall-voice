@@ -38,7 +38,7 @@ if __name__ == '__main__':
                             if j["welcome"]["mp3"].endswith("/") is True:
                                 if os.path.isdir(f"mp3/{j['welcome']['mp3']}") is False or os.path.exists(f"mp3/{j['welcome']['mp3']}") is False:
                                     print(f"For custom file {file}: folder mp3/{j['welcome']['mp3']} doesnt exist")
-
+                                # WIP?
                                 # mp3 = os.listdir("mp3/" + j["welcome"]["mp3"])
                                 # print(f"Folder mp3/{j["welcome"]["mp3"]} doesnt exist: {mp3}")
             except Exception as e:
