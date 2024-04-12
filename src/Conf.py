@@ -9,12 +9,12 @@ class Conf(object):
                 config.read(path)
 
                 # Accessing values from the configuration file
-                self.kafka_servers: str = config.get("kafka_conf", "kafka_servers")
+                self.kafka_servers: str = config.get("kafka", "kafka_servers")
                 self.topic: list[str] = []
-                self.topic.append(config.get("kafka_conf", "topic"))
-                self.group_id: str = config.get("kafka_conf", "group_id")
-                self.username: str = config.get("kafka_conf", "username")
-                self.password: str = config.get("kafka_conf", "password")
+                self.topic.append(config.get("kafka", "topic"))
+                self.group_id: str = config.get("kafka", "group_id")
+                self.username: str = config.get("kafka", "username")
+                self.password: str = config.get("kafka", "password")
                 self.building: str = config.get("building", "name")
                 self.redis_host: str = config.get("redis", "host")
                 self.redis_port: int = int(config.get("redis", "port"))
