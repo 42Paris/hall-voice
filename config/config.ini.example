@@ -8,6 +8,7 @@ password = <passwd>
 [redis]
 host = 127.0.0.1
 port = 6379
+ttl = 15778800  # 6 Month
 
 [42api]
 uid = <API42-UID-key>
