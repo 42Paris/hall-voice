@@ -1,9 +1,13 @@
-[kafka_conf]
+[kafka]
 kafka_servers = <redpanda>
 topic = <topic>
 group_id = <group_id>
 username = <user>
 password = <passwd>
+
+[redis]
+host = 127.0.0.1
+port = 6379
 
 [42api]
 uid = <API42-UID-key>

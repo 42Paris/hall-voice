@@ -11,7 +11,7 @@ from gtts import gTTS, gTTSError
 
 class Messages(object):
     def __init__(self, conf, api) -> None:
-        self.redis = redis.Redis(host='127.0.0.1', port=6379, db=0)
+        self.redis = redis.Redis(host=conf.getRedisHost(), port=conf.getRedisPort(), db=0)
         self.welcomeMsg = conf.getWelcome()
         self.goodbyeMsg = conf.getGoodbye()
         self.buildingName = conf.getBuilding()
