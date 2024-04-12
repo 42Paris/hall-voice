@@ -18,6 +18,7 @@ class Conf(object):
                 self.building: str = config.get("building", "name")
                 self.redis_host: str = config.get("redis", "host")
                 self.redis_port: int = int(config.get("redis", "port"))
+                self.redis_ttl: int = int(config.get("redis", "ttl"))
                 self.apiUID: str = config.get("42api", "uid")
                 self.apiSEC: str = config.get("42api", "secret")
                 self.welcome: list[tuple[str, str]] = []
@@ -61,3 +62,6 @@ class Conf(object):
 
     def getRedisPort(self) -> int:
         return self.redis_port
+
+    def getRedisTTL(self) -> int:
+        return self.redis_ttl
