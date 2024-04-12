@@ -8,8 +8,9 @@ from Kafka import Kafka
 if __name__ == "__main__":
     if sys.argv[1] is not None:
         try:
-            with open(f"logs/{datetime.datetime.now().strftime("%Y%m%d%H%M")}-hallvoice.log", "w") as f:
+            with open(f"logs/{datetime.datetime.now().strftime("%Y%m%d%H%M")}-hallvoice.log", "w", buffering=1) as f:
                 sys.stdout = f
+                sys.stderr = f
                 conf = Conf(sys.argv[1])
                 api = API42(conf)
                 consumer = Kafka(conf, api)
