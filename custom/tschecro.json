@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "tschecro/in"
-  },
-  "goodbye":
-  {
-    "mp3": "tschecro/out"
-  }
+    "welcome": {
+        "mp3": "tschecro/in"
+    },
+    "goodbye": {
+        "mp3": "tschecro/out"
+    }
 }

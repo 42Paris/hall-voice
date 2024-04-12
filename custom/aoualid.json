@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "aoualid/in"
-  },
-  "goodbye":
-  {
-    "mp3": "aoualid/out"
-  }
+    "welcome": {
+        "mp3": "aoualid/in"
+    },
+    "goodbye": {
+        "mp3": "aoualid/out"
+    }
 }

@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "ghanquer/in"
-	},
-	"goodbye":
-	{
-		"mp3": "ghanquer/out"
-	}
+    "welcome": {
+        "mp3": "ghanquer/in"
+    },
+    "goodbye": {
+        "mp3": "ghanquer/out"
+    }
 }

@@ -1,11 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "lkhamlac/in"
+    "welcome": {
+        "mp3": "lkhamlac/in"
     },
-    "goodbye":
-    {
-      "mp3": "lkhamlac/out"
+    "goodbye": {
+        "mp3": "lkhamlac/out"
     }
-   }
-  
+}

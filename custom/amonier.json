@@ -1,11 +1,8 @@
-
 {
-  "welcome":
-  {
-    "mp3": "amonier/in"
-  },
-  "goodbye":
-  {
-    "mp3": "amonier/out"
-  }
+    "welcome": {
+        "mp3": "amonier/in"
+    },
+    "goodbye": {
+        "mp3": "amonier/out"
+    }
 }

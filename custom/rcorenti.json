@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"rcorenti/in"
-	},
-	"goodbye":
-	{
-		"mp3":"rcorenti/out"
-	}
+    "welcome": {
+        "mp3": "rcorenti/in"
+    },
+    "goodbye": {
+        "mp3": "rcorenti/out"
+    }
 }

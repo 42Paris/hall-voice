@@ -1,8 +1,8 @@
 {
-  "welcome": {
-    "mp3": "mabouce/in"
-  },
-  "goodbye": {
-    "mp3": "mabouce/out"
-  }
+    "welcome": {
+        "mp3": "mabouce/in"
+    },
+    "goodbye": {
+        "mp3": "mabouce/out"
+    }
 }

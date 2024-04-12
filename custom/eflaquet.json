@@ -1,10 +1,8 @@
 {
-   "welcome":
-   {
-     "mp3": "eflaquet/in"
-   },
-   "goodbye":
-   {
-     "mp3": "eflaquet/out"
-   }
- }
+    "welcome": {
+        "mp3": "eflaquet/in"
+    },
+    "goodbye": {
+        "mp3": "eflaquet/out"
+    }
+}

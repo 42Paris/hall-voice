@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "lgillard/in"
+    "welcome": {
+        "mp3": "lgillard/in"
     },
-    "goodbye":
-    {
-      "mp3": "lgillard/out"
+    "goodbye": {
+        "mp3": "lgillard/out"
     }
-  }
+}

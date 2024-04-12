@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"oozsertt/"
-	},
-	"goodbye":
-	{
-		"mp3":"oozsertt/"
-	}
+    "welcome": {
+        "mp3": "oozsertt/"
+    },
+    "goodbye": {
+        "mp3": "oozsertt/"
+    }
 }

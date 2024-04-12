@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "flcarval/in"
-  },
-  "goodbye":
-  {
-    "mp3": "flcarval/out"
-  }
+    "welcome": {
+        "mp3": "flcarval/in"
+    },
+    "goodbye": {
+        "mp3": "flcarval/out"
+    }
 }

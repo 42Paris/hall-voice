@@ -1,11 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "fasi-moh/in"
+    "welcome": {
+        "mp3": "fasi-moh/in"
     },
-    "goodbye":
-    {
-      "mp3": "fasi-moh/out"
+    "goodbye": {
+        "mp3": "fasi-moh/out"
     }
-  }
-
+}

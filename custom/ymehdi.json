@@ -1,6 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "ymehdi/in"
+    "welcome": {
+        "mp3": "ymehdi/in"
+    },
+    "goodbye": {
+        "mp3": "ymehdi/in"
     }
-  }
+}

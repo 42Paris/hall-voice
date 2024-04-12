@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-        "mp3":"adben-mc/"
+    "welcome": {
+        "mp3": "adben-mc/"
     },
-    "goodbye":
-    {
-        "mp3":"adben-mc/"
+    "goodbye": {
+        "mp3": "adben-mc/"
     }
 }

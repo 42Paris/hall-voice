@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "asalic/in"
-  },
-  "goodbye":
-  {
-    "mp3": "asalic/out"
-  }
+    "welcome": {
+        "mp3": "asalic/in"
+    },
+    "goodbye": {
+        "mp3": "asalic/out"
+    }
 }

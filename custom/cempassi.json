@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "cempassi/in"
-	},
-	"goodbye":
-	{
-		"mp3": "cempassi/out"
-	}
+    "welcome": {
+        "mp3": "cempassi/in"
+    },
+    "goodbye": {
+        "mp3": "cempassi/out"
+    }
 }
