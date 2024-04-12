@@ -26,7 +26,7 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - You can use systemctl
     - `sudo cp hallvoice.service /etc/systemd/system`
     - `sudo systemctl enable --now hallvoice.service`
-  - You can use Docker (WIP)
+  - You can use Docker (WIP DO NOT USE ME, OR THE RPI WILL BURN)
     - `docker-compose build --no-cache`
     - `docker-compose up -d`
 - Copy and fill-up the config file in
@@ -53,6 +53,8 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - A: As written in `Requirements`: You can find an example [PR](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork) [here](https://github.com/42Paris/hall-voice/pull/3/files), also see `custom/_Example.json`
 - Q: I want to change a song, do I have to buy hallvoice again?
   - A: No
+- Q: What's the TTL (Time to live) for the cache?
+  - A: TTL for redis cache is 6 month, the staff can change it in the config file
 - Q: Code is garbage, can I improve it?
   - I guess... Yes you can? You can try to do a [PR](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork)
 
