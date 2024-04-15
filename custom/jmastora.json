@@ -1,0 +1,12 @@
+{
+    "welcome":
+    {
+      "txt":"bonjour bibiche",
+      "lang":"fr"
+    },
+    "goodbye":
+    {
+      "txt":"я очень люблю шоколад",
+      "lang":"ru"
+    }
+}
