@@ -9,8 +9,9 @@ if __name__ == "__main__":
     if sys.argv[1] is not None:
         try:
             with open(f"logs/{datetime.datetime.now().strftime("%Y%m%d-%H%M%S")}_hallvoice.log", "w", buffering=1) as f:
-                sys.stdout = f
-                sys.stderr = f
+                if '--log-in-file' in sys.argv:
+                    sys.stdout = f
+                    sys.stderr = f
                 conf = Conf(sys.argv[1])
                 api = API42(conf)
                 consumer = Kafka(conf, api)
