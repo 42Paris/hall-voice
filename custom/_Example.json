@@ -5,12 +5,13 @@
 	{
 		"_comment": "Choses between `mp3` OR `txt`",
 		"_comment": "When `mp3` is used, Only ONE path is required, it could be a folder, or a single mp3 file",
-		"mp3":"mylogin/in"
+		"mp3":"mylogin/in",
+		"_comment": "mp3 files, MUST be in `./mp3/<yourlogin>/in`"
 	},
 	"goodbye":
 	{
 		"_comment": "Again, choses between `mp3` or `txt`",
-		"_comment": "When, `txt` is used, it generate a TTS with google (python3-gTTS):",
+		"_comment": "When, `txt` is used, it generate a TTS with google (python3-gTTS)",
 		"_comment": "You can make one like so",
 
         "txt": "Aurevoir hallvoice!",
