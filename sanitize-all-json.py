@@ -8,7 +8,7 @@ if __name__ == '__main__':
         # Check to be sure that the filename end with json and it's not the example json
         if file.endswith(".json") is True and file != "_Example.json":
             try:
-                # Open JSON file
+                # Open JSON file and load json in var `data`
                 with open(f"custom/{file}", 'r') as json_file:
                     data = json.load(json_file)
                 # Delete the non-beautifull JSON file
@@ -20,7 +20,7 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f"Random Exeption:\n{e}")
 
-    # Again, foreach json file open it and check if files exist
+    # Again, foreach json file open it and check if mp3/folder files exist
     for file in os.listdir("./custom/"):
         if file.endswith(".json") and file != "_Example.json":
             try:
@@ -38,7 +38,7 @@ if __name__ == '__main__':
                             if j["welcome"]["mp3"].endswith("/") is True:
                                 if os.path.isdir(f"mp3/{j['welcome']['mp3']}") is False or os.path.exists(f"mp3/{j['welcome']['mp3']}") is False:
                                     print(f"For custom file {file}: folder mp3/{j['welcome']['mp3']} doesnt exist")
-                                # WIP?
+                                # Script is in WIP?
                                 # mp3 = os.listdir("mp3/" + j["welcome"]["mp3"])
                                 # print(f"Folder mp3/{j["welcome"]["mp3"]} doesnt exist: {mp3}")
             except Exception as e:

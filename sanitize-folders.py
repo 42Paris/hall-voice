@@ -11,11 +11,13 @@ if __name__ == '__main__':
                 if dirname == "entree":
                     full_dir_path = os.path.join(dirpath, dirname)
                     new_full_dir_path = os.path.join(dirpath, "in")
+                    # Rename folder to match the norm
                     shutil.move(full_dir_path, new_full_dir_path)
                     print(f"Renamed '{full_dir_path}' to '{new_full_dir_path}'")
                 if dirname == "sortie":
                     full_dir_path = os.path.join(dirpath, dirname)
                     new_full_dir_path = os.path.join(dirpath, "out")
+                    # Rename folder to match the norm
                     shutil.move(full_dir_path, new_full_dir_path)
                     print(f"Renamed '{full_dir_path}' to '{new_full_dir_path}'")
         except Exception as e:
