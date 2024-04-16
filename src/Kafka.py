@@ -43,7 +43,7 @@ class Kafka(object):
                 if msg is None:
                     continue
                 if msg.error():
-                    if msg.error().code() == KafkaError.PARTITION_EOF:
+                    if msg.error().code() == KafkaError._PARTITION_EOF:
                         # End of partition event
                         sys.stderr.write(
                             '%% %s [%d] reached end at offset %d\n' % (msg.topic(), msg.partition(), msg.offset()))
@@ -55,6 +55,8 @@ class Kafka(object):
         except KeyboardInterrupt:
             # Handle keyboard interrupt
             pass
+        except AttributeError as e:
+            print(f"AttributeError excepted:\n{e}")
         finally:
             print('CTRL+C Pressed, closing properly Kafka consumer')
             # Close down consumer to commit final offsets.
