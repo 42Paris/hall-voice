@@ -1,6 +1,7 @@
 import datetime
 import requests
 import redis
+import time
 
 
 class API42(object):
@@ -41,6 +42,10 @@ class API42(object):
                 return None
             elif intra.status_code == 429:
                 print(f"[{datetime.datetime.now()}] API42 rate limited, waiting {intra.headers['Retry-After']} seconds")
+                time.sleep(int(intra.headers['Retry-After']))
+                self.getToken()
+                time.sleep(3)
+                intra = requests.get(url)
                 return
             if intra.status_code != 200:
                 print(f"[{datetime.datetime.now()}] Error while getting user name for {login},"
