@@ -29,6 +29,10 @@ class Conf(object):
                     self.goodbye.append(goodbyeMsg)
         except FileNotFoundError as e:
             print(f"Cannot open {path}:\n{e}")
+        except configparser.NoSectionError as e:
+            print(f"Cannot read config at {path}:\n{e}")
+            exit(1)
+
 
     def getKafkaServer(self) -> str:
         return self.kafka_servers
