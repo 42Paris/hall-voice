@@ -53,14 +53,12 @@ class Kafka(object):
                     # Process the message
                     self.Messages.processMessage(msg.value().decode('utf-8'))
         except KeyboardInterrupt:
-            # Handle keyboard interrupt
-            pass
-        except AttributeError as e:
-            print(f"AttributeError excepted:\n{e}")
-        finally:
             print('CTRL+C Pressed, closing properly Kafka consumer')
             # Close down consumer to commit final offsets.
             self.consumer.close()
+            exit(0)
+        except AttributeError as e:
+            print(f"AttributeError excepted:\n{e}")
 
     def close(self):
         self.consumer.close()
