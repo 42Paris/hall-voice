@@ -46,7 +46,6 @@ class API42(object):
                 self.getToken()
                 time.sleep(3)
                 intra = requests.get(url)
-                return
             if intra.status_code != 200:
                 print(f"[{datetime.datetime.now()}] Error while getting user name for {login},"
                       f" getting new token and retry")
