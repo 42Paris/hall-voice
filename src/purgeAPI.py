@@ -13,6 +13,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         client_address = ipaddress.ip_address(self.client_address[0])
         if (client_address in ipaddress.ip_network("10.42.0.0/16")
                 or (client_address in ipaddress.ip_network("10.43.0.0/16"))
+                or (client_address in ipaddress.ip_network("10.41.0.0/16"))
+                or (client_address in ipaddress.ip_network("10.50.0.0/16"))
                 or (client_address in ipaddress.ip_network("10.51.0.0/16"))
                 or (client_address in ipaddress.ip_network("127.0.0.1/32"))):
             # Parse query parameters
