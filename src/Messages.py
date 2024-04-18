@@ -1,7 +1,6 @@
 import datetime
 import os
 import json
-
 import pygame
 import redis
 from io import BytesIO
