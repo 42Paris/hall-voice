@@ -6,7 +6,7 @@ import time
 
 class API42(object):
     def __init__(self, conf) -> None:
-        self.redis = redis.Redis(host='127.0.0.1', port=6379, db=0)
+        self.redis = redis.Redis(host=conf.getRedisHost(), port=conf.getRedisPort(), db=0)
         self.redis_ttl: int = conf.getRedisTTL()
         apiKey: list[str] = conf.getAPIkeys()
         self.apiUID: str = apiKey[0]
