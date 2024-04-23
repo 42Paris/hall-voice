@@ -28,8 +28,9 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
     - `sudo cp hallvoice.service /etc/systemd/system`
     - `sudo systemctl enable --now hallvoice.service`
   - You can use Docker (WIP DO NOT USE ME, OR THE RPI WILL BURN)
-    - `docker-compose build --no-cache`
-    - `docker-compose up -d`
+    - `docker compose build --no-cache`
+    - `docker compose up -d`
+    - To look at logs: `docker compose logs -f`
 - Copy and fill-up the config file in
   - `cp config/config.ini.example config/config.ini`
 - Kafka:
