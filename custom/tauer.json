@@ -1,11 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "tauer/in/"
+    "welcome": {
+        "mp3": "tauer/in/"
     },
-    "goodbye":
-    {
-      "mp3": "tauer/out/"
+    "goodbye": {
+        "mp3": "tauer/out/"
     }
-  }
-  
+}

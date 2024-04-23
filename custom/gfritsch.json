@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"gfritsch/in"
-	},
-	"goodbye":
-	{
-		"mp3":"gfritsch/out"
-	}
+    "welcome": {
+        "mp3": "gfritsch/in"
+    },
+    "goodbye": {
+        "mp3": "gfritsch/out"
+    }
 }

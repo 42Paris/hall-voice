@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "thi-nguy/in"
+    "welcome": {
+        "mp3": "thi-nguy/in"
     },
-    "goodbye":
-    {
-      "mp3": "thi-nguy/out"
+    "goodbye": {
+        "mp3": "thi-nguy/out"
     }
-  }
+}

@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
+    "welcome": {
         "mp3": "tamigore/in"
     },
-    "goodbye":
-    {
+    "goodbye": {
         "mp3": "tamigore/out"
     }
 }

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "chduong/in"
-  },
-  "goodbye":
-  {
-    "mp3": "chduong/out"
-  }
+    "welcome": {
+        "mp3": "chduong/in"
+    },
+    "goodbye": {
+        "mp3": "chduong/out"
+    }
 }

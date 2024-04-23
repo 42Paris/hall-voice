@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
+    "welcome": {
         "mp3": "bdetune/In"
     },
-    "goodbye":
-    {
+    "goodbye": {
         "mp3": "bdetune/Out"
     }
 }

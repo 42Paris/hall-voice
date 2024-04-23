@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "hvercell/in"
-  },
-  "goodbye":
-  {
-    "mp3": "hvercell/out"
-  }
+    "welcome": {
+        "mp3": "hvercell/in"
+    },
+    "goodbye": {
+        "mp3": "hvercell/out"
+    }
 }

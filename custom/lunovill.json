@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "lunovill/in"
-	},
-	"goodbye":
-	{
-		"mp3": "lunovill/out"
-	}
+    "welcome": {
+        "mp3": "lunovill/in"
+    },
+    "goodbye": {
+        "mp3": "lunovill/out"
+    }
 }

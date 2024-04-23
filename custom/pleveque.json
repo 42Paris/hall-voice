@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "pleveque/in"
+    "welcome": {
+        "mp3": "pleveque/in"
     },
-    "goodbye":
-    {
-      "mp3": "pleveque/out"
+    "goodbye": {
+        "mp3": "pleveque/out"
     }
 }

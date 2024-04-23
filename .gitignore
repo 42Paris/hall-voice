@@ -1,7 +1,13 @@
 cache/
+logs/
 config.json
 config.ini
 .env
 .envrc
 .DS_Store
 .idea
+__pycache__
+venv
+.venv
+login.list
+firstname.list

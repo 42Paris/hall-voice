@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "ssirguy/in"
-  },
-  "goodbye":
-  {
-    "mp3": "ssirguy/out"
-  }
+    "welcome": {
+        "mp3": "ssirguy/in"
+    },
+    "goodbye": {
+        "mp3": "ssirguy/out"
+    }
 }

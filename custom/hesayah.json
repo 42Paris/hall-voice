@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "hesayah/in"
+    "welcome": {
+        "mp3": "hesayah/in"
     },
-    "goodbye":
-    {
-      "mp3": "hesayah/out"
+    "goodbye": {
+        "mp3": "hesayah/out"
     }
 }
