@@ -10,4 +10,4 @@ RUN pip3 install --no-cache -r requirements.txt --break-system-packages
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["python3", "/hallvoice/porte.py", "/hallvoice/conf/config.ini"]
