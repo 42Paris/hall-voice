@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "sanauth/in/"
-	},
-	"goodbye":
-	{
-		"mp3": "sanauth/out/"
-	}
+    "welcome": {
+        "mp3": "sanauth/in/"
+    },
+    "goodbye": {
+        "mp3": "sanauth/out/"
+    }
 }

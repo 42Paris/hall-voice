@@ -1,11 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3":"pperol/in/"
-  },
-  "goodbye":
-  {
-    "mp3":"pperol/out/"
-  }
+    "welcome": {
+        "mp3": "pperol/in/"
+    },
+    "goodbye": {
+        "mp3": "pperol/out/"
+    }
 }
-

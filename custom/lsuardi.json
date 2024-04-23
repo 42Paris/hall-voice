@@ -1,8 +1,8 @@
 {
-	"welcome": {
-		"mp3": "lsuardi/in"
-	},
-	"goodbye": {
-		"mp3": "lsuardi/out"
-	}
+    "welcome": {
+        "mp3": "lsuardi/in"
+    },
+    "goodbye": {
+        "mp3": "lsuardi/out"
+    }
 }

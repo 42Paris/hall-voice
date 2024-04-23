@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-	  "mp3": "earnaud/in"
-	},
-	"goodbye":
-	{
-	  "mp3": "earnaud/out"
-	}
-  }
+    "welcome": {
+        "mp3": "earnaud/in"
+    },
+    "goodbye": {
+        "mp3": "earnaud/out"
+    }
+}

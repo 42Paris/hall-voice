@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "kyacini/in"
+    "welcome": {
+        "mp3": "kyacini/in"
     },
-    "goodbye":
-    {
-      "mp3": "kyacini/out"
+    "goodbye": {
+        "mp3": "kyacini/out"
     }
-  }
+}

@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "lpascrea/in"
-  },
-  "goodbye":
-  {
-    "mp3": "lpascrea/out"
-  }
+    "welcome": {
+        "mp3": "lpascrea/in"
+    },
+    "goodbye": {
+        "mp3": "lpascrea/out"
+    }
 }

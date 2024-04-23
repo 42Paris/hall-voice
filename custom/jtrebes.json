@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "jtrebes"
-  },
-  "goodbye":
-  {
-    "mp3": "jtrebes"
-  }
+    "welcome": {
+        "mp3": "jtrebes"
+    },
+    "goodbye": {
+        "mp3": "jtrebes"
+    }
 }

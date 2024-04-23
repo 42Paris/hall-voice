@@ -1,10 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "jremy/in"
+    "welcome": {
+        "mp3": "jremy/in"
     },
-    "goodbye":
-    {
-      "mp3": "jremy/out"
+    "goodbye": {
+        "mp3": "jremy/out"
     }
-  }
+}

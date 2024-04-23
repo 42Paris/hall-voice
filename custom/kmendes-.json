@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "kmendes-/"
-	},
-	"goodbye":
-	{
-		"mp3": "kmendes-/"
-	}
+    "welcome": {
+        "mp3": "kmendes-/"
+    },
+    "goodbye": {
+        "mp3": "kmendes-/"
+    }
 }

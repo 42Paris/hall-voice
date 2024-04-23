@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "hperrin/in"
-	},
-	"goodbye":
-	{
-		"mp3": "hperrin/out"
-	}
+    "welcome": {
+        "mp3": "hperrin/in"
+    },
+    "goodbye": {
+        "mp3": "hperrin/out"
+    }
 }

@@ -1,0 +1,32 @@
+services:
+  hallvoice:
+    hostname: hallvoice
+    build:
+      dockerfile: Dockerfile.porte
+    volumes:
+      - ./src:/hallvoice
+      - ./config:/hallvoice/conf
+      - ./logs:/hallvoice/logs
+    devices:
+      - /dev/snd:/dev/snd
+    networks:
+      - default
+  purge_api:
+    hostname: purgeAPI
+    build:
+      dockerfile: Dockerfile.API
+    volumes:
+      - ./src:/hallvoice
+      - ./config:/hallvoice/conf
+      - ./logs:/hallvoice/logs
+    networks:
+      - default
+  redis:
+    image: redis:latest
+    hostname: redis
+    volumes:
+      - ./cache:/var/lib/redis/
+    networks:
+      - default
+networks:
+  default:

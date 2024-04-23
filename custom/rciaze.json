@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-	  "mp3": "rciaze/in"
-	},
-	"goodbye":
-	{
-	  "mp3": "rciaze/out"
-	}
+    "welcome": {
+        "mp3": "rciaze/in"
+    },
+    "goodbye": {
+        "mp3": "rciaze/out"
+    }
 }

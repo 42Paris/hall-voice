@@ -1,10 +1,8 @@
 {
-  "welcome":
-  {
-    "mp3": "xsaulnie/in"
-  },
-  "goodbye":
-  {
-    "mp3": "xsaulnie/out"
-  }
+    "welcome": {
+        "mp3": "xsaulnie/in"
+    },
+    "goodbye": {
+        "mp3": "xsaulnie/out"
+    }
 }

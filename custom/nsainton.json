@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"nsainton/in/"
-	},
-	"goodbye":
-	{
-		"mp3":"nsainton/out/"
-	}
+    "welcome": {
+        "mp3": "nsainton/in/"
+    },
+    "goodbye": {
+        "mp3": "nsainton/out/"
+    }
 }

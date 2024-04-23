@@ -1,11 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "thsembel/entree"
-	},
-	"goodbye":
-	{
-		"mp3": "thsembel/sortie"
-	}
+    "welcome": {
+        "mp3": "thsembel/in"
+    },
+    "goodbye": {
+        "mp3": "thsembel/out"
+    }
 }
-

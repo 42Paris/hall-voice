@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3":"bguiset"
-	},
-	"goodbye":
-	{
-		"mp3":"bguiset"
-	}
+    "welcome": {
+        "mp3": "bguiset"
+    },
+    "goodbye": {
+        "mp3": "bguiset"
+    }
 }

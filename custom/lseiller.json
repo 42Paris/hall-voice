@@ -1,11 +1,8 @@
 {
-    "welcome":
-    {
-      "mp3": "lseiller/in"
+    "welcome": {
+        "mp3": "lseiller/in"
     },
-    "goodbye":
-    {
-      "mp3": "lseiller/out"
+    "goodbye": {
+        "mp3": "lseiller/out"
     }
-  }
-  
+}

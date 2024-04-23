@@ -1,10 +1,8 @@
 {
-	"welcome":
-	{
-		"mp3": "agiguair/in"
-	},
-	"goodbye":
-	{
-		"mp3": "agiguair/out"
-	}
+    "welcome": {
+        "mp3": "agiguair/in"
+    },
+    "goodbye": {
+        "mp3": "agiguair/out"
+    }
 }

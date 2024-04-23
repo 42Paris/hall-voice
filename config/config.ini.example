@@ -1,12 +1,21 @@
-[kafka_conf]
-kafka_servers = 127.0.0.1
-topic = <topic-name>
-group_id = <group-name>
-username = <user-name>
-password = <password>
+[kafka]
+kafka_servers = <redpanda>
+topic = <topic>
+group_id = <group_id>
+username = <user>
+password = <passwd>
+
+[redis]
+host = redis
+port = 6379
+ttl = 15778800  # 6 Months
+
+[42api]
+uid = <API42-UID-key>
+secret = <API42-Top-Secret-Do_no_push_me>
 
 [building]
-name = <Where am I?>
+name = <where>
 
 [welcome]
 message1 = Bonjour <name>
