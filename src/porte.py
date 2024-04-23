@@ -14,14 +14,14 @@ if __name__ == "__main__":
         print("\tYou can also add --log-in-file in the end to output log in file")
         exit(0)
     elif sys.argv[1] is not None and os.path.exists(sys.argv[1]):
-        with open(f"logs/{datetime.datetime.now().strftime("%Y%m%d-%H%M%S")}_hallvoice.log", "w", buffering=1) as f:
-            if '--log-in-file' in sys.argv:
+        if '--log-in-file' in sys.argv:
+            with open(f"logs/{datetime.datetime.now().strftime("%Y%m%d-%H%M%S")}_hallvoice.log", "w", buffering=1) as f:
                 sys.stdout = f
                 sys.stderr = f
-            conf = Conf(sys.argv[1])
-            api = API42(conf)
-            consumer = Kafka(conf, api)
-            consumer.consume_messages()
+        conf = Conf(sys.argv[1])
+        api = API42(conf)
+        consumer = Kafka(conf, api)
+        consumer.consume_messages()
     else:
         print("Config path not exists, check your args...")
         print("Path for config file should be the first arg")
