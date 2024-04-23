@@ -5,7 +5,12 @@ import ipaddress
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from Conf import Conf
 
-r = redis.Redis(host='127.0.0.1', port=6379, db=0)
+if sys.argv[1] is not None:
+    conf = Conf(sys.argv[1])
+    r = redis.Redis(host=conf.getRedisHost(), port=conf.getRedisPort(), db=0)
+else:
+    print(f"Usage: python3 purgeAPI.py <path-to-conf-file>")
+    exit(1)
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
@@ -54,5 +59,4 @@ def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    conf = Conf(sys.argv[1])
     run()
