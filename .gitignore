@@ -1,5 +1,6 @@
 cache/
 logs/
+config/
 config.json
 config.ini
 .env
