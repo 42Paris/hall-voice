@@ -73,6 +73,17 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - ~5300 login is used to cache firstnames
 - Volume is at maximum in `alsamixer`
 
+# Change logs
+- Hallvoice V2
+  - Now works with kafka
+- Hallvoice V3
+  - Still in python but now code is object oriented
+  - Redis cache to store the firstname from 42API
+  - Redis cache to store
+  - Norm and sanitize JSON files
+- Hallvoice V3.1
+  - Dockerized!
+
 ###### Made with love by 42Paris team SI
 
 ###### Soon, Hallvoice V4 in Golang!
