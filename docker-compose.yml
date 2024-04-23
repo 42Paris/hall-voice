@@ -1,4 +1,3 @@
-version: '3.9'
 services:
   hallvoice:
     hostname: hallvoice
@@ -7,8 +6,9 @@ services:
     volumes:
       - ./src:/hallvoice
       - ./config:/hallvoice/conf
+      - ./logs:/hallvoice/logs
     devices:
-      - /dev/bus/usb:/dev/bus/usb
+      - /dev/snd:/dev/snd
     networks:
       - default
   purge_api:
@@ -16,12 +16,16 @@ services:
     build:
       dockerfile: Dockerfile.API
     volumes:
-      - ./src:/purgeAPI
+      - ./src:/hallvoice
+      - ./config:/hallvoice/conf
+      - ./logs:/hallvoice/logs
     networks:
       - default
   redis:
     image: redis:latest
     hostname: redis
+    volumes:
+      - ./cache:/var/lib/redis/
     networks:
       - default
 networks:
