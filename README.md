@@ -1,7 +1,7 @@
 # Porte42 - Hall Voice
 Bonjour la porte
 
-# Requirments
+# Requirements
 ## Studs
 - Buy Hall Voice Change on [intra shop](https://shop.intra.42.fr/)
 - Make a [Pull Request](https://help.github.com/en/articles/creating-a-pull-request-from-a-fork) to add your files
