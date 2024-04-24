@@ -14,8 +14,17 @@ else:
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    def reponse(self, value: int, message):
+        self.send_response(value)
+        # If login not found in cache
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        print(message)
+        self.wfile.write(message.encode())
+
     def do_GET(self):
         client_address = ipaddress.ip_address(self.client_address[0])
+        # Check if client is from range of networks
         if (client_address in ipaddress.ip_network("10.42.0.0/16")
                 or (client_address in ipaddress.ip_network("10.43.0.0/16"))
                 or (client_address in ipaddress.ip_network("10.41.0.0/16"))
@@ -24,31 +33,33 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 or (client_address in ipaddress.ip_network("127.0.0.1/32"))):
             # Parse query parameters
             query_components = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
-            # Check if 'purge' parameter exists
-            purge_value = query_components.get('purge', None)
-
-            if purge_value:
+            if 'purge' in query_components:
+                purge_value = query_components.get('purge', None)
                 print(f"Purge request received with value: {purge_value[0]}")
+                # Get firstname from cache
                 cache = r.get(f"login: {purge_value[0]}")
+                # If firname is cached
                 if cache:
+                    # Delete firstname from redis cache
                     r.delete(f"login: {purge_value[0]}")
-                    # Respond to the client
-                    self.send_response(200)
-                    self.send_header('Content-type', 'text/html')
-                    self.end_headers()
-                    self.wfile.write(f"Login {purge_value[0]} purged from cache.".encode())
+                    self.reponse(200, f"Login {purge_value[0]} purged from cache. Value was {cache.decode()}")
+                # Else login not found in cache
                 else:
-                    self.send_response(404)
-                    # If login not found in cache
-                    self.send_header('Content-type', 'text/html')
-                    self.end_headers()
-                    self.wfile.write(f"Login not found: {purge_value[0]} not in cache".encode())
+                    self.reponse(404, f"Cannot purge `{purge_value[0]}`, not found in cache")
+            elif 'get' in query_components:
+                get_value = query_components.get('get', None)
+                print(f"Get request received with value: {get_value[0]}")
+                # Get firstname from cache
+                cache = r.get(f"login: {get_value[0]}")
+                # If firname is cached
+                if cache:
+                    # Print value in console and response
+                    self.reponse(200, f"Value for `{get_value[0]}` is `{cache.decode()}` from cache.")
+                else:
+                    self.reponse(404, f"Cannot get `{get_value[0]}`, not found in cache")
             else:
-                # If no purge parameter, send man
-                self.send_response(400)
-                self.send_header('Content-type', 'text/html')
-                self.end_headers()
-                self.wfile.write("Please provide a 'purge' query parameter.".encode())
+                # If no parameter, send man
+                self.reponse(400, "Please provide a 'purge' or `get` query parameter.")
 
 
 def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler):
