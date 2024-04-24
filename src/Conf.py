@@ -16,6 +16,7 @@ class Conf(object):
                 self.username: str = config.get("kafka", "username")
                 self.password: str = config.get("kafka", "password")
                 self.building: str = config.get("building", "name")
+                self.purgeToken: str = config.get("purgeapi", "token")
                 self.redis_host: str = config.get("redis", "host")
                 self.redis_port: int = int(config.get("redis", "port"))
                 self.redis_ttl: int = int(config.get("redis", "ttl"))
@@ -51,6 +52,9 @@ class Conf(object):
 
     def getBuilding(self) -> str:
         return self.building
+
+    def getPurgeToken(self) -> str:
+        return self.purgeToken
 
     def getAPIkeys(self) -> list[str]:
         return [self.apiUID, self.apiSEC]

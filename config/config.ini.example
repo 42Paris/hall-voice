@@ -17,6 +17,9 @@ secret = <API42-Top-Secret-Do_no_push_me>
 [building]
 name = <where>
 
+[purgeapi]
+token = <Put a random token here>
+
 [welcome]
 message1 = Bonjour <name>
 message2 = Bienvenue <name>

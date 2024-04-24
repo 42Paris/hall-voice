@@ -24,6 +24,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         client_address = ipaddress.ip_address(self.client_address[0])
+        if conf.getPurgeToken():
+            print("WIP, Please code me")
         # Check if client is from range of networks
         if (client_address in ipaddress.ip_network("10.42.0.0/16")
                 or (client_address in ipaddress.ip_network("10.43.0.0/16"))
