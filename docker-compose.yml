@@ -10,6 +10,8 @@ services:
       - ./src:/hallvoice
       - ./config:/hallvoice/config
       - ./logs:/hallvoice/logs
+      - ./mp3:/hallvoice/mp3
+      - ./custom:/hallvoice/custom
     devices:
       - /dev/snd:/dev/snd
     networks:

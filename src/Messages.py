@@ -1,6 +1,7 @@
 import datetime
 import os
 import json
+import sys
 import pygame
 import redis
 from io import BytesIO
@@ -31,8 +32,9 @@ class Messages(object):
         if login is not None and login != "":
             firstname: str = self.api.getUsualName(login)
         if firstname is None or firstname == "":
-            firstname:str = data["firstname"]
-        jsonFile: str = "custom/" + login + ".json"
+            firstname: str = data["firstname"]
+        jsonFile: str = "/hallvoice/custom/" + login + ".json" if '--docker' in sys.argv else ("custom/" +
+                                                                                               login + ".json")
         if os.path.isfile(jsonFile):
             print(f"[{datetime.datetime.now()}] Custom HallVoice for " + login)
             self.playCustomSound(kind, jsonFile, firstname)
@@ -49,7 +51,8 @@ class Messages(object):
                     if "mp3" in j[kind]:
                         try:
                             if os.path.isdir("mp3/" + j[kind]["mp3"]) is True:
-                                pygame.mixer.music.load("mp3/" + j[kind]["mp3"] + "/" + choice(os.listdir("mp3/" + j[kind]["mp3"])))
+                                pygame.mixer.music.load("mp3/" + j[kind]["mp3"] + "/" +
+                                                        choice(os.listdir("mp3/" + j[kind]["mp3"])))
                             elif os.path.isfile("mp3/" + j[kind]["mp3"]) is True:
                                 pygame.mixer.music.load("mp3/" + j[kind]["mp3"])
                             pygame.mixer.music.play()
@@ -82,7 +85,7 @@ class Messages(object):
     def say(self, txt: str, lang: str) -> None:
         mp3_fp = BytesIO()
         if txt is not None and txt != "":
-            cache = self.redis.get(txt+lang)  # Get the TTS from cache
+            cache = self.redis.get(txt + lang)  # Get the TTS from cache
             if cache:  # If TTS is cached, play it
                 print(f"[{datetime.datetime.now()}] TTS cache getted!")
                 mp3_fp.write(cache)
@@ -97,7 +100,7 @@ class Messages(object):
                     tts.write_to_fp(mp3_fp)
                     # Convert the MP3 BytesIO object to WAV format in memory
                     mp3_fp.seek(0)  # Reset the file pointer to the beginning
-                    self.redis.set(txt+lang, mp3_fp.read(), ex=self.redis_ttl)
+                    self.redis.set(txt + lang, mp3_fp.read(), ex=self.redis_ttl)
                     self.playMP3(mp3_fp)
                 except gTTSError as e:  # If we break gTTS API with rate-limit
                     print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
