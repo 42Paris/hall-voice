@@ -33,10 +33,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run sanitize.py
+      - name: Run scripts/sanitize.py
         id: check-sanitize
         continue-on-error: true
-        run: echo $HOME/files.json | xargs python3 sanitize.py -v --db -10.0 --
+        run: echo $HOME/files.json | xargs python3 scripts/sanitize.py -v --db -10.0 --
 
       - name: Commit changes
         id: check-sanitize-commit
