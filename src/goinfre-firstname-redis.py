@@ -39,11 +39,10 @@ def api_call(start_l, end_l, access_token):
                         print(f"Failed to add login {line.strip()} in cache because error {user}")
 
 
-with open("config.ini", "r"):
-    config = configparser.ConfigParser()
-    config.read("config.ini")
-    apiUID = config.get("42api", "uid")
-    apiSEC = config.get("42api", "secret")
+config = configparser.ConfigParser()
+config.read("config/config.ini")
+apiUID = config.get("42api", "uid")
+apiSEC = config.get("42api", "secret")
 urltoken = requests.post("https://api.intra.42.fr/oauth/token?grant_type=client_credentials&client_id=" + apiUID + "&client_secret=" + apiSEC)
 token = urltoken.json()['access_token']
 
