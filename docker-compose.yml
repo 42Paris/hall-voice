@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     build:
       dockerfile: Dockerfile.porte
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./src:/hallvoice
       - ./config:/hallvoice/config
@@ -17,6 +19,8 @@ services:
     restart: unless-stopped
     build:
       dockerfile: Dockerfile.API
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./src:/hallvoice
       - ./config:/hallvoice/config
@@ -28,7 +32,7 @@ services:
     hostname: redis
     restart: unless-stopped
     volumes:
-      - ./cache:/var/lib/redis/
+      - ./cache:/data
     ports:
       - 8000:8000
     networks:
