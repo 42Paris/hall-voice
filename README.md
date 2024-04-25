@@ -87,6 +87,22 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
   - Norm and sanitize JSON files
 - Hallvoice V3.1
   - Dockerized!
+- Hallvoice V3.2
+  - Improvement in dockerization!
+  - Added `get` param in PurgeAPI
+  - PurgeAPI code Improvement
+- Hallvoice V3.2.1
+  - WIP, Token authentification for PurgeAPI
+- Hallvoice V3.3
+  - Removed unused files
+  - Moved CI scripts to dedicated folder
+  - Moved conf file to folder
+  - Updated some path in conf files
+- Hallvoice V3.3.1
+  - Updated volumes for redis container
+- Hallvoice V3.3.2
+  - Added the very most important folders in hallvoice container
+  - Custom path if run in docker mode
 
 ###### Made with love by 42Paris team SI
 
