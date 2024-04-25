@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "txt": ["Wesh flo", "Bonjour mamie"]
+    },
+    "goodbye": {
+        "txt": ["Au revoir mamie", "Tchao Flo"]
+    }
+}
