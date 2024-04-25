@@ -4,14 +4,17 @@ services:
     restart: unless-stopped
     build:
       dockerfile: Dockerfile.porte
+    depends_on:
+      - redis
     environment:
       - PYTHONUNBUFFERED=1
+      - TZ=Europe/Paris
     volumes:
-      - ./src:/hallvoice
-      - ./config:/hallvoice/config
+      - ./src:/hallvoice:ro
+      - ./config:/hallvoice/config:ro
       - ./logs:/hallvoice/logs
-      - ./mp3:/hallvoice/mp3
-      - ./custom:/hallvoice/custom
+      - ./mp3:/hallvoice/mp3:ro
+      - ./custom:/hallvoice/custom:ro
     devices:
       - /dev/snd:/dev/snd
     networks:
@@ -21,22 +24,27 @@ services:
     restart: unless-stopped
     build:
       dockerfile: Dockerfile.API
+    depends_on:
+        - redis
     environment:
       - PYTHONUNBUFFERED=1
+      - TZ=Europe/Paris
     volumes:
-      - ./src:/hallvoice
-      - ./config:/hallvoice/config
+      - ./src:/hallvoice:ro
+      - ./config:/hallvoice/config:ro
       - ./logs:/hallvoice/logs
+    ports:
+      - 8000:8000
     networks:
       - default
   redis:
     image: redis:latest
     hostname: redis
     restart: unless-stopped
+    environment:
+      - TZ=Europe/Paris
     volumes:
       - ./cache:/data
-    ports:
-      - 8000:8000
     networks:
       - default
 networks:

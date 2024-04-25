@@ -15,6 +15,9 @@ class Conf(object):
                 self.group_id: str = config.get("kafka", "group_id")
                 self.username: str = config.get("kafka", "username")
                 self.password: str = config.get("kafka", "password")
+                self.pathCustom: str = config.get("path", "custom")
+                self.pathMP3: str = config.get("path", "mp3")
+                self.pathLogs: str = config.get("path", "logs")
                 self.building: str = config.get("building", "name")
                 self.purgeToken: str = config.get("purgeapi", "token")
                 self.redis_host: str = config.get("redis", "host")
@@ -49,6 +52,15 @@ class Conf(object):
 
     def getPassword(self) -> str:
         return self.password
+
+    def getCustomPath(self) -> str:
+        return self.pathCustom
+
+    def getMP3Path(self) -> str:
+        return self.pathMP3
+
+    def getLogPath(self) -> str:
+        return self.pathLogs
 
     def getBuilding(self) -> str:
         return self.building
