@@ -22,6 +22,7 @@ if __name__ == '__main__':
                 exit(1)
 
     # Again, foreach json file open it and check if mp3/folder files exist
+    # TODO Make sur the path start with login and ends with `/`
     for file in os.listdir("./custom/"):
         if file.endswith(".json") and file != "_Example.json":
             try:

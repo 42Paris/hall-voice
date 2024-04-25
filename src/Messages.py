@@ -16,6 +16,8 @@ class Messages(object):
         self.goodbyeMsg: list[tuple[str, str]] = conf.getGoodbye()
         self.buildingName: str = conf.getBuilding()
         self.redis_ttl: int = conf.getRedisTTL()
+        self.mp3Path: str = conf.getMP3Path()
+        self.customPath: str = conf.getCustomPath()
         self.api = api
         pygame.mixer.init()
 
@@ -33,10 +35,9 @@ class Messages(object):
             firstname: str = self.api.getUsualName(login)
         if firstname is None or firstname == "":
             firstname: str = data["firstname"]
-        jsonFile: str = "/hallvoice/custom/" + login + ".json" if '--docker' in sys.argv else ("custom/" +
-                                                                                               login + ".json")
+        jsonFile: str = (self.customPath + login + ".json")
         if os.path.isfile(jsonFile):
-            print(f"[{datetime.datetime.now()}] Custom HallVoice for " + login)
+            print(f"[{datetime.datetime.now()}] Custom HallVoice for " + login + ": " + jsonFile)
             self.playCustomSound(kind, jsonFile, firstname)
             return
         else:
@@ -50,18 +51,29 @@ class Messages(object):
                 if kind in j:
                     if "mp3" in j[kind]:
                         try:
-                            if os.path.isdir("mp3/" + j[kind]["mp3"]) is True:
-                                pygame.mixer.music.load("mp3/" + j[kind]["mp3"] + "/" +
-                                                        choice(os.listdir("mp3/" + j[kind]["mp3"])))
-                            elif os.path.isfile("mp3/" + j[kind]["mp3"]) is True:
-                                pygame.mixer.music.load("mp3/" + j[kind]["mp3"])
+                            if os.path.isdir(self.mp3Path + j[kind]["mp3"]) is True:
+                                customMP3 = (self.mp3Path + j[kind]["mp3"] + "/" + choice(os.listdir(self.mp3Path +
+                                                                                                     j[kind]["mp3"])))
+                                pygame.mixer.music.load(customMP3)
+                            elif os.path.isfile(self.mp3Path + j[kind]["mp3"]) is True:
+                                customMP3 = self.mp3Path + j[kind]["mp3"]
+                                pygame.mixer.music.load(customMP3)
+                            else:
+                                self.playError("Error while loading a random mp3 file, please contact staff member")
+                                print(f"[{datetime.datetime.now()}] Error for custom hallvoice {jsonFile}"
+                                      f", invalid path")
+                                return
+                            print(f"[{datetime.datetime.now()}] Playing {customMP3} selected from json {jsonFile}")
                             pygame.mixer.music.play()
                             while pygame.mixer.music.get_busy():
                                 pass
                         except pygame.error as e:
-                            print(f"[{datetime.datetime.now()}] Error while plying a custom song:\n{e}")
-                            self.playError()
-
+                            print(f"[{datetime.datetime.now()}] Error while plying a custom song with pygame.mixer():"
+                                  f"\n{e}")
+                            self.playError("Error while playing a custom song, please contact staff member")
+                        except FileNotFoundError as e:
+                            self.playError("Error while loading your custom MP3 file, please contact staff member")
+                            print(f"[{datetime.datetime.now()}] Custom HallVoice for {firstname} not found:\n{e}")
                     elif "txt" in j[kind]:
                         lang: str = j[kind]["lang"] if "lang" in j[kind] else "fr"
                         if isinstance(j[kind]["txt"], list):
@@ -69,9 +81,14 @@ class Messages(object):
                         elif isinstance(j[kind]["txt"], str):
                             self.say(j[kind]["txt"], lang)
                 else:
-                    self.genericMessage(firstname, kind)
+                    self.playError(f"Invalide JSON file {jsonFile}, please check your PR")
+                    print(f"[{datetime.datetime.now()}] Invalide JSON file {jsonFile}, kind in/out not found")
         except FileNotFoundError as e:
-            print(f"Custom HallVoice for {firstname} not found:\n{e}")
+            self.playError("Error while loading your custom JSON, please contact staff member")
+            print(f"[{datetime.datetime.now()}] Custom HallVoice for {firstname} not found:\n{e}")
+        except Exception as e:
+            self.playError("A Serious error happend, please contact staff member")
+            print(f"[{datetime.datetime.now()}] Random Exception at playCustomSound():\n{e}")
 
     def genericMessage(self, firstname: str, kind: str) -> None:
         tts: str = ""
@@ -106,7 +123,8 @@ class Messages(object):
                     print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")
                     self.playMP3(mp3_fp)
         else:
-            self.playError()
+            self.playError("Error while generating TTS message, please contact staff member")
+            print(f"[{datetime.datetime.now()}] TTS messages generation error for txt: {txt}")
 
     @staticmethod
     def playMP3(mp3: BytesIO) -> None:
@@ -116,9 +134,9 @@ class Messages(object):
         while pygame.mixer.music.get_busy():
             pass
 
-    def playError(self) -> None:
+    def playError(self, message: str) -> None:
         mp3_fp = BytesIO()
-        cache = self.redis.get("HallvoiceERROR")
+        cache = self.redis.get(f"HallvoiceERROR+{message}")
         if cache:
             print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS cached")
             mp3_fp.write(cache)
@@ -126,11 +144,11 @@ class Messages(object):
         else:
             print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS not cached, caching him")
             try:
-                tts = gTTS(text="Hallvoice Error, please contact staff member", lang="en")
+                tts = gTTS(text=message, lang="en")
                 tts.write_to_fp(mp3_fp)
                 # Convert the MP3 BytesIO object to WAV format in memory
                 mp3_fp.seek(0)  # Reset the file pointer to the beginning
-                self.redis.set("HallvoiceERROR", mp3_fp.read(), ex=self.redis_ttl)
+                self.redis.set(f"HallvoiceERROR+{message}", mp3_fp.read(), ex=self.redis_ttl)
                 self.playMP3(mp3_fp)
             except gTTSError as e:
                 print(f"[{datetime.datetime.now()}] HallvoiceERROR TTS error:\n{e}")

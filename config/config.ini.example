@@ -14,6 +14,11 @@ ttl = 15778800  # 6 Months
 uid = <API42-UID-key>
 secret = <API42-Top-Secret-Do_no_push_me>
 
+[path]
+custom = <where json files?>
+mp3 = <where mp3 files?>
+logs = <where logs?>
+
 [building]
 name = <where>
 
@@ -29,6 +34,7 @@ message5 = Wesh wesh <name> bien ou bien?
 message6 = Coucou <name>
 message7 = Yo <name> tu va bien?
 message8 = Salut <name> tu nous a grave manquer
+message9 = Hello <name>
 
 [goodbye]
 message1 = Au revoir <name>
@@ -39,3 +45,4 @@ message5 = Reviens vite <name>
 message6 = Bonsoir <name>
 message7 = Tu va nous manquer <name>
 message8 = Bon courrage <name>
+message9 = Tchao <name>
