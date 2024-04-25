@@ -114,6 +114,8 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
     - Forcing TZ
     - Ports for purgeAPI
   - More print() and TTS for debugging
+- Hallvoice V3.3.4
+  - Moved and modified print()
 
 ###### Made with love by 42Paris team SI
 
