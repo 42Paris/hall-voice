@@ -63,7 +63,7 @@ class Messages(object):
                                 print(f"[{datetime.datetime.now()}] Error for custom hallvoice {jsonFile}"
                                       f", invalid path")
                                 return
-                            print(f"[{datetime.datetime.now()}] Playing {customMP3} selected from json {jsonFile}")
+                            print(f"[{datetime.datetime.now()}] Playing {customMP3}")
                             pygame.mixer.music.play()
                             while pygame.mixer.music.get_busy():
                                 pass
@@ -96,12 +96,12 @@ class Messages(object):
             tts: str = self.welcomeMsg[randint(0, len(self.welcomeMsg) - 1)][1].replace("<name>", firstname)
         elif kind == "goodbye" or kind == "out":
             tts: str = self.goodbyeMsg[randint(0, len(self.goodbyeMsg) - 1)][1].replace("<name>", firstname)
-        print(f"[{datetime.datetime.now()}] {tts}")
         self.say(tts, "fr")
 
     def say(self, txt: str, lang: str) -> None:
         mp3_fp = BytesIO()
         if txt is not None and txt != "":
+            print(f"[{datetime.datetime.now()}] Playing TTS: {txt}")
             cache = self.redis.get(txt + lang)  # Get the TTS from cache
             if cache:  # If TTS is cached, play it
                 print(f"[{datetime.datetime.now()}] TTS cache getted!")
