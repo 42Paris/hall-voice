@@ -103,6 +103,17 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
 - Hallvoice V3.3.2
   - Added the very most important folders in hallvoice container
   - Custom path if run in docker mode
+- Hallvoice V3.3.3
+  - Path for custom MP3 and JSON is now in config file
+  - Custom MP3 played is now logged
+  - Added print() and TTS for helping debugging
+  - Added one Welcome and Goodbye message
+  - docker-compose.yaml
+    - added depends_on for hallvoice and purgeapi containers
+    - Explicit read-only on folder: config, mp3, custom 
+    - Forcing TZ
+    - Ports for purgeAPI
+  - More print() and TTS for debugging
 
 ###### Made with love by 42Paris team SI
 
