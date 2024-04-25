@@ -52,14 +52,18 @@ class Messages(object):
                     if "mp3" in j[kind]:
                         try:
                             if os.path.isdir(self.mp3Path + j[kind]["mp3"]) is True:
-                                pygame.mixer.music.load(self.mp3Path + j[kind]["mp3"] + "/" +
-                                                        choice(os.listdir(self.mp3Path + j[kind]["mp3"])))
+                                customMP3 = (self.mp3Path + j[kind]["mp3"] + "/" + choice(os.listdir(self.mp3Path +
+                                                                                                     j[kind]["mp3"])))
+                                pygame.mixer.music.load(customMP3)
                             elif os.path.isfile(self.mp3Path + j[kind]["mp3"]) is True:
-                                pygame.mixer.music.load(self.mp3Path + j[kind]["mp3"])
+                                customMP3 = self.mp3Path + j[kind]["mp3"]
+                                pygame.mixer.music.load(customMP3)
                             else:
                                 self.playError("Error while loading a random mp3 file, please contact staff member")
-                                print(f"Error for custom hallvoice {jsonFile}, invalid path")
+                                print(f"[{datetime.datetime.now()}] Error for custom hallvoice {jsonFile}"
+                                      f", invalid path")
                                 return
+                            print(f"[{datetime.datetime.now()}] Playing {customMP3} selected from json {jsonFile}")
                             pygame.mixer.music.play()
                             while pygame.mixer.music.get_busy():
                                 pass
@@ -69,7 +73,7 @@ class Messages(object):
                             self.playError("Error while playing a custom song, please contact staff member")
                         except FileNotFoundError as e:
                             self.playError("Error while loading your custom MP3 file, please contact staff member")
-                            print(f"Custom HallVoice for {firstname} not found:\n{e}")
+                            print(f"[{datetime.datetime.now()}] Custom HallVoice for {firstname} not found:\n{e}")
                     elif "txt" in j[kind]:
                         lang: str = j[kind]["lang"] if "lang" in j[kind] else "fr"
                         if isinstance(j[kind]["txt"], list):
@@ -78,13 +82,13 @@ class Messages(object):
                             self.say(j[kind]["txt"], lang)
                 else:
                     self.playError(f"Invalide JSON file {jsonFile}, please check your PR")
-                    print(f"Invalide JSON file {jsonFile}, kind in/out not found")
+                    print(f"[{datetime.datetime.now()}] Invalide JSON file {jsonFile}, kind in/out not found")
         except FileNotFoundError as e:
             self.playError("Error while loading your custom JSON, please contact staff member")
-            print(f"Custom HallVoice for {firstname} not found:\n{e}")
+            print(f"[{datetime.datetime.now()}] Custom HallVoice for {firstname} not found:\n{e}")
         except Exception as e:
             self.playError("A Serious error happend, please contact staff member")
-            print(f"Random Exception at playCustomSound():\n{e}")
+            print(f"[{datetime.datetime.now()}] Random Exception at playCustomSound():\n{e}")
 
     def genericMessage(self, firstname: str, kind: str) -> None:
         tts: str = ""
