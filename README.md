@@ -62,9 +62,9 @@ You can find an example PR [here](https://github.com/42Paris/hall-voice/pull/3/f
 
 ## Staff
 - Q: I am the bocal, how to purge cache from a login?
-  - A: From bocal's network, make GET call at `http://<rpi-IP>/?purge=<login>`
+  - A: From bocal's network, make GET call at `http://<rpi-IP>:8000/?purge=<login>`
 - Q: How can I query cache ?
-  - A: From bocal's network, make GET call at `http://<rpi-IP>/?get=<login>`
+  - A: From bocal's network, make GET call at `http://<rpi-IP>:8000/?get=<login>`
 - Q: Something's f*cky, need to debug!
   - A: Logs can be found in folder `logs/<date>-hallvoice.log`
 - Q: How to update?
